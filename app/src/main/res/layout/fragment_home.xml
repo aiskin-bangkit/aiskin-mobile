@@ -1,22 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="#FEE600">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/grouped_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_hero_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/syne_semibold"
+                android:gravity="center_vertical"
+                android:text="@string/text_hero_home"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_hero_home"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.126" />
+
+            <ImageView
+                android:id="@+id/image_hero_home"
+                android:layout_width="141dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="64dp"
+                android:contentDescription="@string/hero_image_home_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/home_hero_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_hero_home"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.168" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/grouped_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/grouped_layout_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#FEde00"
+            >
+
+            <View
+                android:id="@+id/rounded_bg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="-50dp"
+                android:background="@drawable/rounded_background_home"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/centered_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/syne_regular"
+                android:gravity="center"
+                android:text="@string/text_check_skin"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/button_left"
+                app:layout_constraintEnd_toEndOf="@+id/rounded_bg"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/rounded_bg"
+                app:layout_constraintTop_toTopOf="@+id/rounded_bg"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/button_left"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_marginStart="125dp"
+                android:background="#FEE600"
+                android:text="@string/text_check_skin"
+                app:layout_constraintBottom_toBottomOf="@+id/rounded_bg"
+                app:layout_constraintStart_toStartOf="@+id/rounded_bg"
+                app:layout_constraintTop_toTopOf="@+id/rounded_bg" />
+
+            <Button
+                android:id="@+id/button_right"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="125dp"
+                android:background="#FEE600"
+                android:text="@string/text_check_skin"
+                app:layout_constraintBottom_toBottomOf="@+id/rounded_bg"
+                app:layout_constraintEnd_toEndOf="@+id/rounded_bg"
+                app:layout_constraintTop_toTopOf="@+id/rounded_bg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
