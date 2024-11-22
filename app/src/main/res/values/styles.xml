@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MediumWhite16sp" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/syne_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
