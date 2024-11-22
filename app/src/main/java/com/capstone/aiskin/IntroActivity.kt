@@ -1,5 +1,6 @@
 package com.capstone.aiskin
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -44,9 +46,17 @@ class IntroActivity : AppCompatActivity() {
                 positionOffsetPixels: Int
             ) {
                 //
+
             }
 
             override fun onPageSelected(position: Int) {
+                // Update ProgressBar
+                when (position) {
+                    0 -> animateProgressBar(33)
+                    1 -> animateProgressBar(66)
+                    2 -> animateProgressBar(100)
+                }
+
                 binding.btnNext.text = getString(
                     if (position == layouts.size - 1) R.string.start else R.string.next
                 )
@@ -92,5 +102,12 @@ class IntroActivity : AppCompatActivity() {
         override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
             container.removeView(`object` as View)
         }
+    }
+
+    private fun animateProgressBar(toProgress: Int) {
+        val animator = ObjectAnimator.ofInt(binding.progressBar, "progress", toProgress)
+        animator.duration = 500 // Durasi animasi dalam milidetik
+        animator.interpolator = DecelerateInterpolator() // Interpolasi agar animasi smooth
+        animator.start()
     }
 }

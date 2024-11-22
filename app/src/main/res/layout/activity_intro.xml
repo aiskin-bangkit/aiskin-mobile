@@ -1,9 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/intro_background_1"
     tools:context=".IntroActivity">
 
     <!-- ViewPager untuk swipe halaman -->
@@ -13,18 +11,31 @@
         android:layout_height="match_parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!-- ProgressBar untuk indikator halaman -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="120dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="26dp"
+        android:progress="33"
+        android:max="100"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/rounded_progress" />
+
+
     <!-- Tombol Next, menimpa ViewPager -->
     <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_gravity="bottom"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="80dp"
-        android:layout_gravity="bottom"
-        android:backgroundTint="#FEE600"
+        android:background="@drawable/bg_button_login"
         android:text="@string/next"
-        android:textColor="@android:color/black"
-        android:textStyle="bold" />
+        style="@style/MediumWhite16sp" />
 
     <TextView
         android:id="@+id/tvSkip"
@@ -34,8 +45,5 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:layout_gravity="bottom"
-
-
-        />
+        android:layout_gravity="bottom" />
 </FrameLayout>
