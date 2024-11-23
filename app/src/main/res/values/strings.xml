@@ -22,4 +22,8 @@
     <string name="text_hero_home">Hello There Don’t Forget to check your’s skin health</string>
     <string name="hero_image_home_description">Hero Image</string>
     <string name="text_check_skin">Check Your Skin Now\n</string>
+    <string name="text_disease">Skin Disease</string>
+    <string name="text_gallery">Gallery</string>
+    <string name="text_camera">Camera</string>
+    <string name="text_articles">New Articles</string>
 </resources>
