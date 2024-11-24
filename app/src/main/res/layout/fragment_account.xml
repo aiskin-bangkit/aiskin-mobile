@@ -1,0 +1,207 @@
+
+
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true"
+tools:context=".ui.account.AccountFragment"
+android:background="@color/grey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="80dp"
+        >
+
+
+        <!-- Profile Picture -->
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/description_user_image"
+            android:clipToOutline="true"
+            android:src="@drawable/intro_image_3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/rounded_user_image"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Name and Update Info -->
+        <LinearLayout
+            android:id="@+id/layout_user_information"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/iv_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profile">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/syne_semibold"
+                android:text="@string/text_user_name"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_update_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_update_personal_info"
+                android:fontFamily="@font/syne_regular"
+                android:textSize="10sp"
+                android:textColor="@color/grey_200"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_user_information"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_user_information" />
+
+        <TextView
+            android:id="@+id/text_total_liked_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/syne_semibold"
+            android:text="@string/text_total_liked_article"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.265"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.274" />
+
+        <TextView
+            android:id="@+id/text_liked_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/syne_medium"
+            android:text="@string/text_liked_article"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.684" />
+
+        <TextView
+            android:id="@+id/text_total_diagnosed_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_total_diagnosed_history"
+            android:fontFamily="@font/syne_semibold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.747"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.263" />
+
+        <TextView
+            android:id="@+id/text_diagnosed_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/syne_medium"
+            android:text="@string/text_diagnosed_history"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.843"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintVertical_bias="0.684" />
+
+        <TextView
+            android:id="@+id/text_diagnosed_history_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/syne_regular"
+            android:text="@string/text_diagnosed_history"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <ImageView
+            android:id="@+id/icon_arrow_right_disease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/text_diagnosed_history_2"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toEndOf="@id/text_diagnosed_history_2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_diagnosed_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/text_diagnosed_history_2"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/text_liked_article_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/syne_regular"
+            android:text="@string/text_liked_article"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_diagnosed_history" />
+
+        <ImageView
+            android:id="@+id/icon_arrow_right_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/text_liked_article_2"
+            app:layout_constraintStart_toEndOf="@id/text_liked_article_2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_liked_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/text_liked_article_2"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
