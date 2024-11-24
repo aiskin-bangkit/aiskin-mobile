@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -24,6 +25,7 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(binding.root)
 
         layouts = intArrayOf(
@@ -35,7 +37,7 @@ class IntroActivity : AppCompatActivity() {
         binding.viewPager.adapter = IntroAdapter(this, layouts)
 
         binding.tvSkip.setOnClickListener {
-            goToMainActivity()
+            goToLoginActivity()
         }
 
         binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -45,12 +47,10 @@ class IntroActivity : AppCompatActivity() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                //
 
             }
 
             override fun onPageSelected(position: Int) {
-                // Update ProgressBar
                 when (position) {
                     0 -> animateProgressBar(33)
                     1 -> animateProgressBar(66)
@@ -63,14 +63,13 @@ class IntroActivity : AppCompatActivity() {
             }
 
             override fun onPageScrollStateChanged(state: Int) {
-                //
             }
         })
 
         binding.btnNext.setOnClickListener {
             when (binding.viewPager.currentItem) {
                 layouts.size - 1 -> {
-                    goToMainActivity()
+                    goToLoginActivity()
                 }
                 else -> {
                     binding.viewPager.currentItem += 1
@@ -79,8 +78,8 @@ class IntroActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+    private fun goToLoginActivity() {
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 
@@ -106,8 +105,8 @@ class IntroActivity : AppCompatActivity() {
 
     private fun animateProgressBar(toProgress: Int) {
         val animator = ObjectAnimator.ofInt(binding.progressBar, "progress", toProgress)
-        animator.duration = 500 // Durasi animasi dalam milidetik
-        animator.interpolator = DecelerateInterpolator() // Interpolasi agar animasi smooth
+        animator.duration = 500
+        animator.interpolator = DecelerateInterpolator()
         animator.start()
     }
 }
