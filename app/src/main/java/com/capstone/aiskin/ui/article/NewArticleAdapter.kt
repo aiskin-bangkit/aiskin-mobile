@@ -1,33 +1,30 @@
-package com.capstone.aiskin.ui.home
+package com.capstone.aiskin.ui.article
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.core.data.dummy.ArticleItem
-import com.capstone.aiskin.databinding.ItemArticleBinding
+import com.capstone.aiskin.databinding.ItemHeroNewsBinding
 
-class ArticleAdapter(private val articleList: List<ArticleItem>) :
-    RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class NewArticleAdapter(private val articleList: List<ArticleItem>) :
+    RecyclerView.Adapter<NewArticleAdapter.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(private val binding: ItemArticleBinding) :
+    inner class ArticleViewHolder(private val binding: ItemHeroNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: ArticleItem) {
             with(binding) {
-                tvItemName.text = article.title
-                tvItemDescription.text = article.description
-                tvItemCreatedAt.text = article.createdAt
-
-                Glide.with(imgItemPhoto.context)
+                tvTitle.text = article.title
+                tvSubtitle.text = article.description
+                Glide.with(imgBackground.context)
                     .load("https://www.wowkeren.com/display/images/photo/2023/04/10/00476771.jpg")
-                    .into(imgItemPhoto)
+                    .into(imgBackground)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val binding =
-            ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemHeroNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArticleViewHolder(binding)
     }
 

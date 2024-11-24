@@ -1,4 +1,4 @@
-package com.capstone.aiskin.ui.home
+package com.capstone.aiskin.ui.article
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

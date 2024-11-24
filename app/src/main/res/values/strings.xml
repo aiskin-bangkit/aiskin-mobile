@@ -26,4 +26,15 @@
     <string name="text_gallery">Gallery</string>
     <string name="text_camera">Camera</string>
     <string name="text_articles">New Articles</string>
+    <string name="title_article">Article</string>
+    <string name="title_account">Account</string>
+    <string name="text_find_article">Find Article...</string>
+    <string name="description_back_button">Back</string>
+    <string name="description_user_image">Profile Picture</string>
+    <string name="text_user_name">Jhon Doe</string>
+    <string name="text_update_personal_info">Update Personal Info</string>
+    <string name="text_total_liked_article">15</string>
+    <string name="text_liked_article">Liked Articles</string>
+    <string name="text_total_diagnosed_history">8</string>
+    <string name="text_diagnosed_history">Diagnosed History</string>
 </resources>

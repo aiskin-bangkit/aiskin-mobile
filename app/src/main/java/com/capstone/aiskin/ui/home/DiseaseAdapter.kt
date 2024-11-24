@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.capstone.aiskin.core.data.dummy.DiseaseItem
 import com.capstone.aiskin.databinding.ItemDiseaseBinding
 
-data class DiseaseItem(val imageUrl: String, val name: String, val description: String)
+
 
 class DiseaseAdapter(private val diseaseList: List<DiseaseItem>) :
     RecyclerView.Adapter<DiseaseAdapter.DiseaseViewHolder>() {
