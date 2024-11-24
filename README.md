@@ -48,8 +48,8 @@ Follow these steps to set up and run the AISkin mobile app:
    Ensure all necessary dependencies are installed as defined in the `build.gradle` file.  
 
 ## UI/UX Design  
-The app's user interface was designed using Figma. To view or contribute to the design, use the link below:
-[Design Figma]([https://www.figma.com/file/KZkSefWCH4r1nmVsbxPiVu/AISkin?type=design&node-id=109%3A230&t=KGxvrQLeGzCrFJaW-1)
+The app's user interface was designed using Figma. To view or contribute to the design, use the link below: n\
+[Design Figma](https://www.figma.com/file/KZkSefWCH4r1nmVsbxPiVu/AISkin?type=design&node-id=109%3A230&t=KGxvrQLeGzCrFJaW-1)
 
 
 Let’s work together to enhance global skin health with **AISkin**! 💡
