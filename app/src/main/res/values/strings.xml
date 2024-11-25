@@ -27,4 +27,35 @@
     <string name="register">Register</string>
     <string name="username">Username</string>
     <string name="desc_image_intro">Image Intro</string>
+    <string name="skip">Skip</string>
+
+
+    <!-- item disease -->
+    <string name="text_title_item_disease">Example Disease</string>
+    <string name="text_description_item_disease">Example Description Lorem Ipsum</string>
+
+    <!-- item article -->
+    <string name="text_title_item_article">Example Article</string>
+    <string name="text_description_item_article">Example Article Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida iaculis risus, at faucibus ex mollis et. Ut et augue venenatis erat pretium molestie.</string>
+    <string name="text_created_at_item_article">Wednesday, 24 November 2024</string>
+
+    <!-- Hero Fragment-->
+    <string name="text_hero_home">Hello There Don’t Forget to check your’s skin health</string>
+    <string name="hero_image_home_description">Hero Image</string>
+    <string name="text_check_skin">Check Your Skin Now\n</string>
+    <string name="text_disease">Skin Disease</string>
+    <string name="text_gallery">Gallery</string>
+    <string name="text_camera">Camera</string>
+    <string name="text_articles">New Articles</string>
+    <string name="title_article">Article</string>
+    <string name="title_account">Account</string>
+    <string name="text_find_article">Find Article...</string>
+    <string name="description_back_button">Back</string>
+    <string name="description_user_image">Profile Picture</string>
+    <string name="text_user_name">Jhon Doe</string>
+    <string name="text_update_personal_info">Update Personal Info</string>
+    <string name="text_total_liked_article">15</string>
+    <string name="text_liked_article">Liked Articles</string>
+    <string name="text_total_diagnosed_history">8</string>
+    <string name="text_diagnosed_history">Diagnosed History</string>
 </resources>
