@@ -1,11 +1,11 @@
-package com.capstone.aiskin
+package com.capstone.aiskin.ui.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.aiskin.databinding.ActivityLoginBinding
-import com.capstone.aiskin.ui.RegisterActivity
+import com.capstone.aiskin.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 

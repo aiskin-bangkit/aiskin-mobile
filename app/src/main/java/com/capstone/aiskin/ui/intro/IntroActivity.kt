@@ -1,4 +1,4 @@
-package com.capstone.aiskin
+package com.capstone.aiskin.ui.intro
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
@@ -13,7 +13,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.capstone.aiskin.R
 import com.capstone.aiskin.databinding.ActivityIntroBinding
+import com.capstone.aiskin.ui.login.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
 
