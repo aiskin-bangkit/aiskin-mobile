@@ -29,8 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="#000000"
-            android:textSize="12sp"
+            style="@style/RegularBlack12sp"
             android:textStyle="bold"
             android:fontFamily="@font/syne_regular"
             tools:text="@string/text_title_item_disease" />
@@ -44,7 +43,7 @@
             android:ellipsize="end"
             android:maxLines="5"
             android:fontFamily="@font/syne_regular"
-            android:textSize="8sp"
+            style="@style/RegularGrey8sp"
             tools:text="@string/text_description_item_disease" />
     </LinearLayout>
 

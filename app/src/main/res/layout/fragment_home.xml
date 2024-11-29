@@ -35,8 +35,7 @@
                 android:fontFamily="@font/syne_semibold"
                 android:gravity="center_vertical"
                 android:text="@string/text_hero_home"
-                android:textColor="#000000"
-                android:textSize="24sp"
+                style="@style/SemiBoldBlack24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/image_hero_home"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,23 +75,21 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/syne_regular"
                 android:text="@string/text_check_skin"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                style="@style/SemiBoldBlack20sp"
                 app:layout_constraintEnd_toEndOf="@id/grouped_layout_2"
                 app:layout_constraintStart_toStartOf="@id/grouped_layout_2"
                 app:layout_constraintTop_toTopOf="@id/grouped_layout_2" />
 
 
-            <!-- Button left -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/button_left"
+                android:id="@+id/button_gallery"
                 android:layout_width="89dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_button"
                 android:clickable="true"
                 android:focusable="true"
-                app:layout_constraintEnd_toStartOf="@+id/button_right"
+                app:layout_constraintEnd_toStartOf="@+id/button_camera"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/centered_text">
@@ -116,14 +113,13 @@
                         android:layout_marginTop="4dp"
                         android:gravity="center"
                         android:text="@string/text_gallery"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp" />
+                        style="@style/RegularBlack12sp"
+                        />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Button right -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/button_right"
+                android:id="@+id/button_camera"
                 android:layout_width="89dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
@@ -132,7 +128,7 @@
                 android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
-                app:layout_constraintStart_toEndOf="@+id/button_left"
+                app:layout_constraintStart_toEndOf="@+id/button_gallery"
                 app:layout_constraintTop_toBottomOf="@+id/centered_text">
 
                 <LinearLayout
@@ -152,10 +148,11 @@
                         android:layout_marginTop="4dp"
                         android:gravity="center"
                         android:text="@string/text_camera"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp" />
+                        style="@style/RegularBlack12sp"
+                        />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/text_disease"
@@ -164,12 +161,11 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/syne_regular"
                 android:text="@string/text_disease"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                style="@style/SemiBoldBlack20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_left" />
+                app:layout_constraintTop_toBottomOf="@+id/button_gallery" />
 
             <ImageView
                 android:id="@+id/icon_arrow_right_disease"
@@ -179,7 +175,7 @@
                 android:layout_marginBottom="4dp"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintBottom_toBottomOf="@+id/text_disease"
-                app:layout_constraintEnd_toEndOf="@+id/button_left"
+                app:layout_constraintEnd_toEndOf="@+id/button_gallery"
                 app:layout_constraintHorizontal_bias="0.233"
                 app:layout_constraintStart_toEndOf="@id/text_disease" />
 
@@ -199,8 +195,8 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/syne_regular"
                 android:text="@string/text_articles"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                style="@style/SemiBoldBlack20sp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +210,7 @@
                 android:layout_marginBottom="4dp"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintBottom_toBottomOf="@+id/text_article"
-                app:layout_constraintEnd_toEndOf="@+id/button_left"
+                app:layout_constraintEnd_toEndOf="@+id/button_gallery"
                 app:layout_constraintHorizontal_bias="0.157"
                 app:layout_constraintStart_toEndOf="@id/text_article" />
 
