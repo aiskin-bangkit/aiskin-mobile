@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.2"
+fragmentKtx = "1.8.5"
 glide = "4.16.0"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
@@ -17,7 +18,9 @@ navigationUiKtx = "2.8.4"
 activity = "1.9.3"
 
 [libraries]
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

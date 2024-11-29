@@ -6,7 +6,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.aiskin.MainActivity
 import com.capstone.aiskin.databinding.ActivityLoginBinding
-import com.capstone.aiskin.ui.home.HomeFragment
 import com.capstone.aiskin.ui.authentication.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
