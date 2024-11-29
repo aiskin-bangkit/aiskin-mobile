@@ -56,5 +56,10 @@ dependencies {
     // Glide for showing online image
     implementation(libs.glide)
 
+    //noinspection GradleDependency
+    implementation (libs.androidx.activity.ktx)
+    //noinspection GradleDependency,GradleDependency
+    implementation (libs.androidx.fragment.ktx)
+
 
 }

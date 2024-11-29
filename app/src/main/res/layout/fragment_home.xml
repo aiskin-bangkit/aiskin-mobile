@@ -82,14 +82,14 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/button_gallery"
+                android:id="@+id/btn_gallery"
                 android:layout_width="89dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_button"
                 android:clickable="true"
                 android:focusable="true"
-                app:layout_constraintEnd_toStartOf="@+id/button_camera"
+                app:layout_constraintEnd_toStartOf="@+id/btn_camera"
                 app:layout_constraintHorizontal_bias="0.55"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/centered_text">
@@ -119,7 +119,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/button_camera"
+                android:id="@+id/btn_camera"
                 android:layout_width="89dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
@@ -128,7 +128,7 @@
                 android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.55"
-                app:layout_constraintStart_toEndOf="@+id/button_gallery"
+                app:layout_constraintStart_toEndOf="@+id/btn_gallery"
                 app:layout_constraintTop_toBottomOf="@+id/centered_text">
 
                 <LinearLayout
@@ -165,7 +165,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_gallery" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_gallery" />
 
             <ImageView
                 android:id="@+id/icon_arrow_right_disease"
@@ -175,7 +175,7 @@
                 android:layout_marginBottom="4dp"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintBottom_toBottomOf="@+id/text_disease"
-                app:layout_constraintEnd_toEndOf="@+id/button_gallery"
+                app:layout_constraintEnd_toEndOf="@+id/btn_gallery"
                 app:layout_constraintHorizontal_bias="0.233"
                 app:layout_constraintStart_toEndOf="@id/text_disease" />
 
@@ -210,7 +210,7 @@
                 android:layout_marginBottom="4dp"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintBottom_toBottomOf="@+id/text_article"
-                app:layout_constraintEnd_toEndOf="@+id/button_gallery"
+                app:layout_constraintEnd_toEndOf="@+id/btn_gallery"
                 app:layout_constraintHorizontal_bias="0.157"
                 app:layout_constraintStart_toEndOf="@id/text_article" />
 
