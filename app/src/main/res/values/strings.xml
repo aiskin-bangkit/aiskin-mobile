@@ -52,10 +52,18 @@
     <string name="text_find_article">Find Article...</string>
     <string name="description_back_button">Back</string>
     <string name="description_user_image">Profile Picture</string>
-    <string name="text_user_name">Jhon Doe</string>
+    <string name="text_user_name">Von Lycaon</string>
     <string name="text_update_personal_info">Update Personal Info</string>
     <string name="text_total_liked_article">15</string>
     <string name="text_liked_article">Liked Articles</string>
     <string name="text_total_diagnosed_history">8</string>
     <string name="text_diagnosed_history">Diagnosed History</string>
+    <string name="text_article_title">Kalau gatal sebaiknya jangan digaruk, lalu apa solusinya?</string>
+    <string name="text_article_created_at">Thursday, 12 November 2024</string>
+    <string name="text_article_content"><![CDATA[Jakarta (ANTARA) - Pakar dermatologi dan venereologi dr. Amelia Setiawati Soebyanto, Sp.DV, merekomendasikan orang-orang mengompres air dingin kulit yang gatal ketimbang menggaruknya.\n \n\"Kita bisa kompres atau masukkan air dingin ke botol kaca kemudian digulung-gulungkan (ke kulit yang gatal). Itu akan mengurangi gatal karena gatal akan tercampurnsama rasa dingin,\" kata Amelia di Jakarta, Rabu, (22/11/2023).\n \nKemudian, mengenai pendapat sebagian orang bahwa mandi air panas bisa mengatasi gatal, Amelia menuturkan cara itu justru akan menambah rasa gatal.\n \n\"Banyak yang bilang mandi air panas, langsung hilang gatalnya. Ya, bisa juga. Tapi, setelah itu lecet kulitnya. Setelahnya rasanya lebih gatal karena kulitnya lecet,\" tutur dia.  \nKulit gatal merupakan sensasi tidak nyaman pada kulit, polusi dikatakan memainkan peran penting dalam mengakibatkan kulit gatal.\n \nPolusi dapat masuk ke kulit melalui penumpukan partikel polusi di permukaan kulit dan diserap oleh folikel rambut dan kelenjar keringat. Beberapa di antaranya akan bersirkulasi dalam plasma yang kemudian masuk ke lapisan kulit yang lebih dalam.  Lalu, polusi yang masuk ini kemudian menghasilkan radikal bebas yang akan menurunkan kemampuan antioksidan kulit baik secara enzimatik maupun non-enzimatik (vitamin E, vitamin C dan glutation). Lapisan luar kulit yang rusak ini kemudian menyebabkan hilangnya air dalam jumlah banyak pada kulit. Akibatnya, kulit akan relatif lebih kering, mudah mengalami peradangan dan menimbulkan keluhan gatal.]]></string>
+    <string name="text_other_prediction">Other Prediction</string>
+    <string name="text_other_prediction_button">Scabies 3,2%</string>
+    <string name="text_result">Scabies Kutu Kupret</string>
+    <string name="text_result_probability">96% Probabilty</string>
+    <string name="floating_like_button">floating like button</string>
 </resources>

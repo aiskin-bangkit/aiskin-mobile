@@ -43,8 +43,7 @@
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/syne_regular"
                 android:paddingTop="4dp"
-                android:textColor="#000000"
-                android:textSize="14sp"
+                style="@style/MediumBlack14sp"
                 android:textStyle="bold"
                 tools:text="@string/text_title_item_article" />
 
@@ -57,8 +56,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/syne_regular"
                 android:maxLines="2"
-                android:textColor="#666666"
-                android:textSize="8sp"
+                style="@style/RegularGrey8sp"
                 tools:text="@string/text_description_item_article" />
 
             <!-- Created At -->
@@ -69,8 +67,7 @@
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/syne_regular"
-                android:textColor="#888888"
-                android:textSize="7sp"
+                style="@style/RegularGrey7sp"
                 tools:text="@string/text_created_at_item_article" />
         </LinearLayout>
 
