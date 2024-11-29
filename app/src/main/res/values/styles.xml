@@ -30,8 +30,13 @@
         <item name="android:fontFamily">@font/syne_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">0</item>
+    </style>
 
-
+    <style name="RegularWhite16sp" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/syne_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
     </style>
 
     <style name="RegularBlack22sp" parent="TextAppearance.AppCompat">
@@ -41,4 +46,7 @@
         <item name="android:letterSpacing">0</item>
 
     </style>
+
+
+
 </resources>

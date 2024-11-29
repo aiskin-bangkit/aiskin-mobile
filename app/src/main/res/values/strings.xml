@@ -58,4 +58,7 @@
     <string name="text_liked_article">Liked Articles</string>
     <string name="text_total_diagnosed_history">8</string>
     <string name="text_diagnosed_history">Diagnosed History</string>
+    <string name="analyze">Analyze</string>
+    <string name="ambil_ulang">Ambil Ulang</string>
+    <string name="pilih_ulang">Pilih Ulang</string>
 </resources>
