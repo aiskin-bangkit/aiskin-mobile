@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:padding="16dp"
+    tools:context=".ui.PreviewActivity">
+
+    <ImageView
+        android:id="@+id/previewImageView"
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_analyze"
+        android:contentDescription="@string/desc_image_intro"
+        app:layout_constraintBottom_toTopOf="@id/group_btn"
+        app:srcCompat="@drawable/ic_place_holder"
+        tools:ignore="ImageContrastCheck"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <LinearLayout
+        android:id="@+id/group_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_analyze"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_gallery_ulang"
+            style="@style/RegularWhite16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:background="@drawable/bg_button_black"
+            android:drawableStart="@drawable/ic_gallery"
+            android:drawableTint="@color/yellow"
+            android:text="@string/pilih_ulang"
+            android:textAllCaps="false"
+            android:layout_marginEnd="6dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_camera_ulang"
+            style="@style/RegularWhite16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:background="@drawable/bg_button_black"
+            android:drawableStart="@drawable/ic_camera"
+            android:drawableTint="@color/yellow"
+            android:text="@string/ambil_ulang"
+            android:textAllCaps="false"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_analyze"
+        style="@style/RegularBlack16sp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/bg_button"
+        android:text="@string/analyze"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

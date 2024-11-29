@@ -15,7 +15,8 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.capstone.aiskin.R
 import com.capstone.aiskin.databinding.ActivityIntroBinding
-import com.capstone.aiskin.ui.login.LoginActivity
+import com.capstone.aiskin.ui.PreviewActivity
+import com.capstone.aiskin.ui.authentication.login.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
 
@@ -39,7 +40,7 @@ class IntroActivity : AppCompatActivity() {
         binding.viewPager.adapter = IntroAdapter(this, layouts)
 
         binding.tvSkip.setOnClickListener {
-            goToLoginActivity()
+            goToPreviewActivity() // nanti ganti
         }
 
         binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -82,6 +83,14 @@ class IntroActivity : AppCompatActivity() {
 
     private fun goToLoginActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    /**
+     * Fungsi untuk dev prevActivity
+     */
+    private fun goToPreviewActivity() {
+        startActivity(Intent(this, PreviewActivity::class.java))
         finish()
     }
 
