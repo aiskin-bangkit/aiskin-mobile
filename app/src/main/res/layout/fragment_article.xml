@@ -15,45 +15,53 @@
         android:layout_marginTop="56dp"
         android:paddingBottom="80dp">
 
-        <!-- Search Bar -->
-        <RelativeLayout
-            android:id="@+id/search_bar_container"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:background="@drawable/bg_search_bar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            />
 
-            <EditText
-                android:id="@+id/et_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toStartOf="@id/iv_search"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/syne_regular"
-                android:background="@android:color/transparent"
-                android:hint="@string/text_find_article"
-                android:paddingStart="16dp"
-                android:gravity="center_vertical|start"
-                android:textColor="#000000"
-                android:textColorHint="#888888"
-                android:textSize="12sp" />
+        <!-- Search Bar -->
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/search_bar_container"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/bg_search_bar"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-            <ImageView
-                android:id="@+id/iv_search"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="16dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_search"
-                android:contentDescription="Search Icon"
-                app:tint="@color/grey" />
-        </RelativeLayout>
+<!--            <EditText-->
+<!--                android:id="@+id/et_search"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_toStartOf="@id/iv_search"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:fontFamily="@font/syne_regular"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:hint="@string/text_find_article"-->
+<!--                android:paddingStart="16dp"-->
+<!--                android:gravity="center_vertical|start"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textColorHint="#888888"-->
+<!--                android:textSize="12sp" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_search"-->
+<!--                android:layout_width="20dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/ic_search"-->
+<!--                android:contentDescription="Search Icon"-->
+<!--                app:tint="@color/grey" />-->
+<!--        </RelativeLayout>-->
 
         <!-- RecyclerView for New Articles -->
         <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/search_bar_container"
+            app:layout_constraintTop_toBottomOf="@id/search_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

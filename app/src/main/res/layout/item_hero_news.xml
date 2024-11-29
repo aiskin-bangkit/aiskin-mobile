@@ -36,9 +36,8 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:fontFamily="@font/syne_regular"
-                android:textSize="14sp"
+                style="@style/SemiBoldWhite14sp"
                 android:textStyle="bold"
                 tools:text="Stres dan cuaca bisa picu psoriasis" />
 
@@ -47,8 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/grey"
-                android:textSize="8sp"
+                style="@style/RegularWhite8sp"
                 tools:text="...Stres ini bisa secara batin atau secara fisik." />
         </LinearLayout>
     </RelativeLayout>
