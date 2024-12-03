@@ -66,8 +66,11 @@
     <string name="text_result_probability">96% Probabilty</string>
     <string name="floating_like_button">floating like button</string>
 
+    <string name="any_content">Jakarta (ANTARA) - Pakar dermatologi dan venereologi dr. Amelia Setiawati Soebyanto, Sp. DV, merekomendasikan orang-orang mengompres air dingin kulit yang gatal ketimbang menggaruknya.   "Kita bisa kompres atau masukkan air dingin ke botol kaca kemudian digulung-gulungkan (ke kulit yang gatal). Itu akan mengurangi gatal karena gatal akan tercampurnsama rasa dingin," kata Amelia di Jakarta, Rabu, (22/ 11/ 2023).</string>
+
     <!-- String for activity preview -->
     <string name="pilih_ulang">Pilih Ulang</string>
     <string name="ambil_ulang">Ambil Ulang</string>
     <string name="analyze">Analyze</string>
+    <string name="text_title_treatment_recommendation">Treatment Recommendation</string>
 </resources>
