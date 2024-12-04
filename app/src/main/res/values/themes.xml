@@ -29,7 +29,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-
     <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconSize">24dp</item>
         <item name="itemTextAppearanceActive">@style/CustomTextActive</item>

@@ -35,6 +35,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
     }
 }
 
@@ -60,6 +61,13 @@ dependencies {
     implementation (libs.androidx.activity.ktx)
     //noinspection GradleDependency,GradleDependency
     implementation (libs.androidx.fragment.ktx)
+
+
+    //Library TensorFlow Lite
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support.v044)
+    implementation(libs.tensorflow.lite.metadata.v044)
+    implementation(libs.tensorflow.lite.task.vision)
 
     // Api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

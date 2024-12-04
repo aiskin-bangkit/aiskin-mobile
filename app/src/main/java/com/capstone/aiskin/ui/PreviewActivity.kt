@@ -1,5 +1,7 @@
 package com.capstone.aiskin.ui
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -7,15 +9,19 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.capstone.aiskin.core.helper.ImageClassifierHelper
 import com.capstone.aiskin.databinding.ActivityPreviewBinding
+import com.capstone.aiskin.ui.result.ResultActivity
 import com.capstone.aiskin.utils.CameraHelper
 import com.capstone.aiskin.utils.GalleryHelper
 
-class PreviewActivity : AppCompatActivity() {
+import org.tensorflow.lite.task.vision.classifier.Classifications
+
+class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListener {
 
     private lateinit var binding: ActivityPreviewBinding
     private var imageUri: Uri? = null
-
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private lateinit var takePicture: ActivityResultLauncher<Uri>
     private lateinit var pickImage: ActivityResultLauncher<androidx.activity.result.PickVisualMediaRequest>
@@ -24,6 +30,11 @@ class PreviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        imageClassifierHelper = ImageClassifierHelper(
+            context = this,
+            classifierListener = this
+        )
 
         intent.getStringExtra("imageUri")?.let {
             imageUri = Uri.parse(it)
@@ -41,6 +52,56 @@ class PreviewActivity : AppCompatActivity() {
                 imageUri = uri
             }
         }
+
+        binding.btnAnalyze.setOnClickListener {
+            analyzeImage()
+        }
+    }
+
+    private fun analyzeImage() {
+        imageUri?.let { uri ->
+            imageClassifierHelper.classifyStaticImage(uri)
+        } ?: run {
+            Toast.makeText(this, "Please select an image first.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    @SuppressLint("DefaultLocale")
+    override fun onResults(results: List<Classifications>?) {
+        if (results != null && results.isNotEmpty()) {
+            val classifications = results[0].categories
+            if (classifications.isNotEmpty()) {
+                val sortedCategories = classifications.sortedByDescending { it.score }
+                val topCategory = sortedCategories[0]
+                val otherPredictions = sortedCategories
+                    .drop(1)
+                    .take(3)
+                    .filter { it.score > 0 }
+                    .map { it.label to String.format("%.0f%%", it.score * 100) }
+
+                val prediction = topCategory.label
+                val percentageScore = topCategory.score * 100
+                val score = String.format("%.0f%%", percentageScore)
+                val imageUriString = imageUri.toString()
+
+                val intent = Intent(this, ResultActivity::class.java).apply {
+                    putExtra("imageUri", imageUriString)
+                    putExtra("prediction", prediction)
+                    putExtra("score", score)
+                    putExtra("otherPredictions", ArrayList(otherPredictions))
+
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Tidak ada hasil klasifikasi.", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, "Hasil klasifikasi kosong.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onError(error: String) {
+        Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
     }
 
     private fun initActivityResultLaunchers() {
