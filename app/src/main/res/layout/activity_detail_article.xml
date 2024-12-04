@@ -5,28 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".ui.detail_article.DetailArticleActivity">
+    tools:context=".ui.detail.article.DetailArticleActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/yellow"
+        android:layout_gravity="center"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="46dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
+
+
+            <include layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/toolbar"/>
+
             <TextView
                 android:id="@+id/text_article_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_article_title"
+                tools:text="@string/text_article_title"
                 style="@style/SemiBoldBlack20sp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
             <TextView
                 android:id="@+id/text_article_created_at"
@@ -34,7 +50,7 @@
                 android:layout_height="wrap_content"
                 style="@style/RegularGrey10sp"
                 android:layout_marginTop="8sp"
-                android:text="@string/text_article_created_at"
+                tools:text="@string/text_article_created_at"
                 app:layout_constraintTop_toBottomOf="@id/text_article_title"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
@@ -54,10 +70,10 @@
 
             <TextView
                 android:id="@+id/text_article_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/RegularPoppins12sp"
-                android:text="@string/text_article_content"
+                tools:text="@string/text_article_content"
                 android:layout_marginVertical="16dp"
                 app:layout_constraintTop_toBottomOf="@id/image_article"
                 app:layout_constraintStart_toStartOf="parent"

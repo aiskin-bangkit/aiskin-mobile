@@ -1,26 +1,38 @@
-package com.capstone.aiskin.ui.home
+package com.capstone.aiskin.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstone.aiskin.core.data.dummy.ArticleItem
+import com.capstone.aiskin.core.data.network.response.ArticleResponseItem
+import com.capstone.aiskin.core.helper.DateTimeConverter
 import com.capstone.aiskin.databinding.ItemArticleBinding
 
-class ArticleAdapter(private val articleList: List<ArticleItem>) :
+class ArticleAdapter(
+    private val articleList: List<ArticleResponseItem>,
+    private val onItemClick: (String) -> Unit
+    ) :
     RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(private val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(article: ArticleItem) {
+        fun bind(article: ArticleResponseItem) {
             with(binding) {
-                tvItemName.text = article.title
-                tvItemDescription.text = article.description
-                tvItemCreatedAt.text = article.createdAt
+                val formattedDate = article.createdAt?.let {
+                    DateTimeConverter.formatTimestamp(it)
+                } ?: "Unknown Date"
+
+                tvItemName.text = article.name ?: "Unknown"
+                tvItemDescription.text = article.description ?: "No description available"
+                tvItemCreatedAt.text = formattedDate
 
                 Glide.with(imgItemPhoto.context)
-                    .load("https://www.wowkeren.com/display/images/photo/2023/04/10/00476771.jpg")
+                    .load(article.image ?:"https://via.placeholder.com/150")
                     .into(imgItemPhoto)
+
+                root.setOnClickListener {
+                    article.id?.let { id -> onItemClick(id) }
+                }
             }
         }
     }
