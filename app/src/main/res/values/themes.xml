@@ -29,15 +29,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemIconSize">24dp</item>
-        <item name="itemTextAppearanceActive">@style/CustomTextActive</item>
-        <item name="itemTextAppearanceInactive">@style/CustomTextInactive</item>
-        <item name="itemIconTint">@color/black</item>
-        <item name="itemTextColor">@color/black</item>
-        <item name="elevation">8dp</item>
-        <item name="backgroundTint">@color/white</item>
-    </style>
 
     <style name="CustomTextActive" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">14sp</item>

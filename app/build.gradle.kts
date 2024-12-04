@@ -35,6 +35,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
     }
 }
 
@@ -61,5 +62,10 @@ dependencies {
     //noinspection GradleDependency,GradleDependency
     implementation (libs.androidx.fragment.ktx)
 
+    //Library TensorFlow Lite
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support.v044)
+    implementation(libs.tensorflow.lite.metadata.v044)
+    implementation(libs.tensorflow.lite.task.vision)
 
 }
