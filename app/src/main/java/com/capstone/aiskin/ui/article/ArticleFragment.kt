@@ -6,16 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.aiskin.core.data.dummy.getDummyNewArticles
 import com.capstone.aiskin.databinding.FragmentArticleBinding
 import com.capstone.aiskin.ui.adapter.ArticleAdapter
 import com.capstone.aiskin.ui.adapter.HeroArticleAdapter
 import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
-import com.capstone.aiskin.ui.viewmodel.ArticleViewModel
 
 class ArticleFragment : Fragment() {
 

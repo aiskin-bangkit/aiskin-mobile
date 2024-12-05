@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstone.aiskin.core.data.network.response.ArticleResponseItem
+import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
 import com.capstone.aiskin.databinding.ItemHeroNewsBinding
 
 class HeroArticleAdapter(

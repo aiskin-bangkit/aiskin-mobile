@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">AISkin</string>
+
+    <!-- String for Nvigation Bottom -->
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- String for activity intro -->
     <string name="text_intro">Ever wondered where you can find\nout about your skin disease without\ngoing to the doctor?</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
@@ -28,7 +32,6 @@
     <string name="desc_image_intro">Image Intro</string>
     <string name="skip">Skip</string>
 
-
     <!-- item disease -->
     <string name="text_title_item_disease">Example Disease</string>
     <string name="text_description_item_disease">Example Description Lorem Ipsum</string>
@@ -38,8 +41,9 @@
     <string name="text_description_item_article">Example Article Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida iaculis risus, at faucibus ex mollis et. Ut et augue venenatis erat pretium molestie.</string>
     <string name="text_created_at_item_article">Wednesday, 24 November 2024</string>
 
+    <!-- TODO kalo masih ada yang nyatu dipisah ya mar -->
     <!-- Hero Fragment-->
-    <string name="text_hero_home">Hello There Don’t Forget to check your’s skin health</string>
+    <string name="text_hero_home">Hello %1$s, Don’t Forget to check your skin health</string>
     <string name="hero_image_home_description">Hero Image</string>
     <string name="text_check_skin">Check Your Skin Now\n</string>
     <string name="text_disease">Skin Disease</string>
@@ -65,14 +69,12 @@
     <string name="text_result_probability">96% Probabilty</string>
     <string name="floating_like_button">floating like button</string>
 
-
     <!--    String for analyze  -->
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
     <string name="text_loading_description">Deskripsi sedang dimuat...</string>
     <string name="text_result_probability_placeholder">Probabilitas: %s</string>
     <string name="text_prediction_placeholder">%1$s - %2$s</string>
     <string name="text_no_other_predictions">Tidak ada prediksi lainnya.</string>
-
 
     <string name="any_content">Jakarta (ANTARA) - Pakar dermatologi dan venereologi dr. Amelia Setiawati Soebyanto, Sp. DV, merekomendasikan orang-orang mengompres air dingin kulit yang gatal ketimbang menggaruknya.   "Kita bisa kompres atau masukkan air dingin ke botol kaca kemudian digulung-gulungkan (ke kulit yang gatal). Itu akan mengurangi gatal karena gatal akan tercampurnsama rasa dingin," kata Amelia di Jakarta, Rabu, (22/ 11/ 2023).</string>
 
@@ -82,7 +84,10 @@
     <string name="analyze">Analyze</string>
 
 
-
+    <!-- String for activity disease -->
     <string name="text_title_treatment_recommendation">Treatment Recommendation</string>
+
+    <!-- String for activity account -->
+    <string name="logout">Logout</string>
 
 </resources>

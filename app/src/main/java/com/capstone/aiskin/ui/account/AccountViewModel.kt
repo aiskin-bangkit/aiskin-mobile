@@ -1,13 +1,20 @@
 package com.capstone.aiskin.ui.account
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.capstone.aiskin.core.data.network.authentication.AuthRepository
+import com.capstone.aiskin.core.data.local.model.UserModel
+import kotlinx.coroutines.launch
 
-class AccountViewModel : ViewModel() {
+class AccountViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is account Fragment"
+    val userSession: LiveData<UserModel> = authRepository.getSession().asLiveData()
+
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.logout()
+        }
     }
-    val text: LiveData<String> = _text
 }

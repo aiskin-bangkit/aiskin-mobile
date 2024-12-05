@@ -6,14 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.capstone.aiskin.core.helper.DateTimeConverter
 import com.capstone.aiskin.databinding.ActivityDetailDiseaseBinding
-import com.capstone.aiskin.ui.viewmodel.DiseaseViewModel
+import com.capstone.aiskin.utils.DateTimeConverter
 
 class DetailDiseaseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailDiseaseBinding
     private val diseaseViewModel: DiseaseViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +39,18 @@ class DetailDiseaseActivity : AppCompatActivity() {
     private fun observeViewModel() {
         diseaseViewModel.disease.observe(this) { disease ->
             with(binding) {
-                val formattedDate = disease.createdAt?.let {
-                    DateTimeConverter.formatTimestamp(it)
-                } ?: "Unknown Date"
+                val formattedCreatedAt = disease.createdAt?.let { DateTimeConverter.formatTimestamp(it) } ?: "Unknown Date"
+
+                binding.textDiseaseCreatedAt.text = formattedCreatedAt
 
                 textDiseaseTitle.text = disease.name
-                textDiseaseCreatedAt.text = formattedDate
                 textDiseaseDescription.text = disease.description
-                textTreatmentRecommendation.text = disease.treatmentRecommendation
-                textMedicineRecommendation.text = disease.medicineRecommendation
+
+                val treatment = disease.treatmentRecommendation?.joinToString("\n") ?: "No Treatment Info"
+                textTreatmentRecommendation.text = treatment
+
+                val medicine = disease.medicineRecommendation?.joinToString("\n") ?: "No Medicine Info"
+                textMedicineRecommendation.text = medicine
 
                 Glide.with(this@DetailDiseaseActivity)
                     .load(disease.image ?: "https://via.placeholder.com/150")
