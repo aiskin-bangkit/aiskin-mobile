@@ -1,4 +1,4 @@
-package com.capstone.aiskin.ui
+package com.capstone.aiskin.ui.preview
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -44,7 +44,7 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
         initActivityResultLaunchers()
 
         binding.btnGalleryUlang.setOnClickListener {
-            GalleryHelper.pickImage(pickImage, this)
+            GalleryHelper.pickImage(pickImage)
         }
 
         binding.btnCameraUlang.setOnClickListener {
@@ -68,7 +68,7 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
 
     @SuppressLint("DefaultLocale")
     override fun onResults(results: List<Classifications>?) {
-        if (results != null && results.isNotEmpty()) {
+        if (!results.isNullOrEmpty()) {
             val classifications = results[0].categories
             if (classifications.isNotEmpty()) {
                 val sortedCategories = classifications.sortedByDescending { it.score }

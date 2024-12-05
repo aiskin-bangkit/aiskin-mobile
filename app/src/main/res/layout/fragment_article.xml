@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="56dp"
-        android:paddingBottom="80dp">
+        android:paddingBottom="140dp">
 
         <SearchView
             android:id="@+id/search_view"

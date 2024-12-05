@@ -1,12 +1,12 @@
-package com.capstone.aiskin.ui.viewmodel
+package com.capstone.aiskin.ui.article
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.capstone.aiskin.core.data.network.response.ArticleResponseItem
-import com.capstone.aiskin.core.data.network.response.DetailArticleResponse
+import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
+import com.capstone.aiskin.core.data.network.article.response.DetailArticleResponse
 import com.capstone.aiskin.core.data.network.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 

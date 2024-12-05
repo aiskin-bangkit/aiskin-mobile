@@ -13,7 +13,7 @@ android:background="@color/grey">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="80dp"
+        android:paddingBottom="140dp"
         >
 
 
@@ -195,6 +195,20 @@ android:background="@color/grey">
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/text_liked_article_2"
             tools:layout_editor_absoluteX="0dp" />
+
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/red"
+            style="@style/RegularWhite14sp"
+            app:layout_constraintTop_toBottomOf="@id/text_liked_article_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

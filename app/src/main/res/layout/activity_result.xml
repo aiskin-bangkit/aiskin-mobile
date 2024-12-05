@@ -73,6 +73,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="4dp"
             android:src="@drawable/ic_arrow_right"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/text_other_prediction"
             app:layout_constraintStart_toEndOf="@id/text_other_prediction" />
 
@@ -83,7 +84,7 @@
             android:layout_height="32dp"
             android:layout_marginVertical="8dp"
             android:background="@drawable/bg_disease_capsule"
-            android:text="@string/text_other_prediction_button"
+            android:text="@string/text_other_prediction"
             android:gravity="center"
             android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"

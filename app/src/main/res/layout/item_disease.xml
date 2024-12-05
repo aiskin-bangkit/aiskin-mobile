@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,22 +28,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            style="@style/RegularBlack12sp"
-            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:fontFamily="@font/syne_regular"
+            android:textStyle="bold"
+            style="@style/RegularBlack12sp"
             tools:text="@string/text_title_item_disease" />
-
 
         <TextView
             android:id="@+id/tv_item_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:maxLines="2"
             android:ellipsize="end"
-            android:maxLines="5"
+            android:lineSpacingExtra="2dp"
             android:fontFamily="@font/syne_regular"
             style="@style/RegularGrey8sp"
             tools:text="@string/text_description_item_disease" />
     </LinearLayout>
-
 </LinearLayout>

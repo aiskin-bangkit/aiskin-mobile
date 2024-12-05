@@ -6,9 +6,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.capstone.aiskin.core.helper.DateTimeConverter
 import com.capstone.aiskin.databinding.ActivityDetailArticleBinding
-import com.capstone.aiskin.ui.viewmodel.ArticleViewModel
+import com.capstone.aiskin.ui.article.ArticleViewModel
+import com.capstone.aiskin.utils.DateTimeConverter
 
 class DetailArticleActivity : AppCompatActivity() {
 

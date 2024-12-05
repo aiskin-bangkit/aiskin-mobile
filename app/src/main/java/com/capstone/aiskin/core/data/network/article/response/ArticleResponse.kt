@@ -1,4 +1,4 @@
-package com.capstone.aiskin.core.data.network.response
+package com.capstone.aiskin.core.data.network.article.response
 
 import com.google.gson.annotations.SerializedName
 

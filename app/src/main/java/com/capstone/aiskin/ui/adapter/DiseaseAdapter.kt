@@ -1,21 +1,22 @@
 package com.capstone.aiskin.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstone.aiskin.core.data.network.response.DiseaseResponseItem
+import com.capstone.aiskin.core.data.network.disease.response.DiseaseResponse
 import com.capstone.aiskin.databinding.ItemDiseaseBinding
 
 class DiseaseAdapter(
-    private val diseaseList: List<DiseaseResponseItem?>,
+    private val diseaseList: List<DiseaseResponse?>,
     private val onItemClick: (String) -> Unit
     ) :
     RecyclerView.Adapter<DiseaseAdapter.DiseaseViewHolder>() {
 
     inner class DiseaseViewHolder(private val binding: ItemDiseaseBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(disease: DiseaseResponseItem?) {
+        fun bind(disease: DiseaseResponse?) {
             with(binding) {
                 tvItemName.text = disease?.name ?: "Unknown"
                 tvItemDescription.text = disease?.description ?: "No description available"
@@ -40,8 +41,10 @@ class DiseaseAdapter(
     }
 
     override fun onBindViewHolder(holder: DiseaseViewHolder, position: Int) {
+        Log.d("DiseaseAdapter", "Binding disease at position $position")
         holder.bind(diseaseList[position])
     }
+
 
     override fun getItemCount(): Int = diseaseList.size
 }
