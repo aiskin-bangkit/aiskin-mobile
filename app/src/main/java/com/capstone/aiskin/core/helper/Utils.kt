@@ -66,3 +66,11 @@ object DateTimeConverter {
         return dateFormat.format(date)
     }
 }
+
+/**
+ * Util buat nyocokin nama dari model ke API
+ */
+fun normalizeName(name: String): String {
+    return name.replace(Regex("\\s*\\(.*?\\)\\s*"), "").trim().lowercase()
+}
+

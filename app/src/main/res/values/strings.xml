@@ -89,5 +89,8 @@
 
     <!-- String for activity account -->
     <string name="logout">Logout</string>
+    <string name="text_no_data_found">Data tidak ada atau cocok</string>
+    <string name="text_title_medicine_recommendation">Medicine Recommendation</string>
+    <string name="text_no_recommendation">Tidak ada rekomendasi</string>
 
 </resources>
