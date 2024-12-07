@@ -17,7 +17,7 @@
             android:id="@+id/text_result_disease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_result"
+            android:layout_marginTop="32dp"
             style="@style/SemiBoldBlack20sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -25,12 +25,16 @@
         <!-- Confidence Score -->
         <TextView
             android:id="@+id/text_result_percentage"
+            style="@style/RegularBlack12sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            style="@style/RegularGrey14sp"
+            android:layout_height="32dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bg_disease_capsule"
+            android:gravity="center"
+            android:padding="8dp"
             app:layout_constraintTop_toBottomOf="@id/text_result_disease"
             app:layout_constraintStart_toStartOf="parent" />
+
 
         <!-- Image Result -->
         <ImageView
@@ -70,25 +74,12 @@
             android:id="@+id/other_predictions_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="4dp"
-            android:src="@drawable/ic_arrow_right"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/text_other_prediction"
-            app:layout_constraintStart_toEndOf="@id/text_other_prediction" />
-
-        <TextView
-            android:id="@+id/btn_other_prediction"
-            style="@style/RegularBlack12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginVertical="8dp"
-            android:background="@drawable/bg_disease_capsule"
-            android:text="@string/text_other_prediction"
-            android:gravity="center"
-            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_other_prediction" />
+
 
         <TextView
             android:id="@+id/text_title_treatment_recommendation"
@@ -102,7 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_other_prediction" />
+            app:layout_constraintTop_toBottomOf="@+id/other_predictions_container" />
 
         <ImageView
             android:id="@+id/icon_arrow_right_treatment_recommendation"
@@ -131,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/syne_regular"
-            android:text="@string/text_title_treatment_recommendation"
+            android:text="@string/text_title_medicine_recommendation"
             android:textColor="@color/black"
             style="@style/SemiBoldBlack20sp"
             app:layout_constraintEnd_toEndOf="parent"
