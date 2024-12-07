@@ -7,7 +7,6 @@ import com.capstone.aiskin.core.data.network.authentication.AuthRepository
 import com.capstone.aiskin.ui.authentication.register.RegisterViewModel
 import com.capstone.aiskin.ui.authentication.login.LoginViewModel
 import com.capstone.aiskin.core.di.Injection
-import com.capstone.aiskin.ui.account.AccountViewModel
 import com.capstone.aiskin.ui.splashscreen.SplashScreenViewModel
 
 class ViewModelFactory(
@@ -27,8 +26,8 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(authRepository) as T
             }
-            modelClass.isAssignableFrom(AccountViewModel::class.java) -> {
-                AccountViewModel(authRepository) as T
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(authRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

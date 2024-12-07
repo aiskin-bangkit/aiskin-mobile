@@ -24,7 +24,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
                 if (!response.error) {
                     val token = response.token
                     if (token != null) {
-                        val user = UserModel(email, token)
+                        val user = UserModel(email, token )
                         saveSession(user)
                         _loginResult.postValue(user)
                     } else {

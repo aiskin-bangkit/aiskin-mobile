@@ -6,7 +6,6 @@ import com.capstone.aiskin.core.data.local.datastore.dataStore
 import com.capstone.aiskin.core.data.network.authentication.AuthRepository
 import com.capstone.aiskin.core.data.network.retrofit.ApiConfig
 
-
 object Injection {
 
     fun provideAuthRepository(context: Context): AuthRepository {

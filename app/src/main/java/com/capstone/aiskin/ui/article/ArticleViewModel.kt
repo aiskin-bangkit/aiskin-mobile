@@ -10,7 +10,7 @@ import com.capstone.aiskin.core.data.network.article.response.DetailArticleRespo
 import com.capstone.aiskin.core.data.network.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 
-class ArticleViewModel : ViewModel() {
+class ArticleViewModel() : ViewModel() {
 
     // Latest Article Variable
     private val _latestArticles = MutableLiveData<List<ArticleResponseItem>>()
