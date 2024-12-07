@@ -13,16 +13,21 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.capstone.aiskin.R
+import com.capstone.aiskin.core.di.Injection
 import com.capstone.aiskin.databinding.FragmentHomeBinding
+import com.capstone.aiskin.ui.account.AccountViewModel
 import com.capstone.aiskin.ui.preview.PreviewActivity
 import com.capstone.aiskin.ui.adapter.ArticleAdapter
 import com.capstone.aiskin.ui.adapter.DiseaseAdapter
-import com.capstone.aiskin.ui.authentication.login.LoginViewModel
 import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
 import com.capstone.aiskin.ui.detail.disease.DetailDiseaseActivity
 import com.capstone.aiskin.ui.article.ArticleViewModel
+import com.capstone.aiskin.ui.authentication.login.LoginActivity
 import com.capstone.aiskin.ui.detail.disease.DiseaseViewModel
+import com.capstone.aiskin.ui.viewmodel.MainViewModel
 import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
 import com.capstone.aiskin.utils.CameraHelper
 import com.capstone.aiskin.utils.GalleryHelper
@@ -31,6 +36,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var userToken: String? = null
+
 
     private val diseaseViewModel: DiseaseViewModel by viewModels()
     private lateinit var diseaseAdapter: DiseaseAdapter
@@ -38,16 +45,16 @@ class HomeFragment : Fragment() {
     private val articleViewModel: ArticleViewModel by viewModels()
     private lateinit var articleAdapter: ArticleAdapter
 
-    private val loginViewModel: LoginViewModel by viewModels {
-        ViewModelFactory.getInstance(requireActivity().application)
-    }
+    private val accountViewModel: AccountViewModel by viewModels()
+    private lateinit var mainViewModel: MainViewModel
+
 
     private lateinit var pickImage: ActivityResultLauncher<androidx.activity.result.PickVisualMediaRequest>
     private lateinit var takePicture: ActivityResultLauncher<Uri>
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private lateinit var imageUri: Uri
 
-    @SuppressLint("SetTextI18n")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,19 +62,31 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        val authRepository = Injection.provideAuthRepository(requireContext())
+
+        val factory = ViewModelFactory(authRepository, )
+        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
         setupRecyclerView()
         observeViewModel()
         initActivityResultLaunchers()
 
-        val textHeroHome = binding.textHeroHome
-
-        loginViewModel.loginResult.observe(viewLifecycleOwner) { user ->
-            user?.let {
-                // TODO ganti pake name dari user
-//                textHeroHome.text = "Hello ${it.name}, Don’t Forget to check your skin health"
-                textHeroHome.text = "Hello ${it.email}, Don’t Forget to check your skin health"
+        mainViewModel.userSession.observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                navigateToLogin()
+            } else{
+                userToken = user.token
+                Log.d("AccountFragment", "${userToken}")
+                userToken?.let {
+                    if (accountViewModel.userData.value == null) {
+                        accountViewModel.fetchUserProfile(it)
+                    }
+                }
             }
         }
+
+        observeAccountViewModel()
+
 
         if (diseaseViewModel.diseaseList.value.isNullOrEmpty()) {
             diseaseViewModel.fetchDiseases()
@@ -120,9 +139,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-
-    diseaseViewModel.diseaseListError.observe(viewLifecycleOwner) { errorMessage ->
+        diseaseViewModel.diseaseListError.observe(viewLifecycleOwner) { errorMessage ->
             Toast.makeText(requireContext(), "Error: $errorMessage", Toast.LENGTH_LONG).show()
         }
 
@@ -193,6 +210,32 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun observeAccountViewModel() {
+        accountViewModel.userData.observe(viewLifecycleOwner) { userData ->
+            Log.d("HomeFragment", "User data observed: $userData")
+            userData?.let {
+                binding.textHeroHome.text = getString(R.string.text_hero_home, it.name ?: "Guest")
+            } ?: run {
+                binding.textHeroHome.text = getString(R.string.text_hero_home, "Guest")
+            }
+        }
+
+        accountViewModel.userDataError.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                Toast.makeText(requireContext(), "Error: $it", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                Log.d("HomeFragment", "Fetching user data...")
+            } else {
+                Log.d("HomeFragment", "User data fetch complete.")
+            }
+        }
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -211,6 +254,12 @@ class HomeFragment : Fragment() {
             putExtra("DISEASE_ID", id)
         }
         startActivity(intent)
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
 }

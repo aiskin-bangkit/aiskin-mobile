@@ -57,9 +57,9 @@
     <string name="description_user_image">Profile Picture</string>
     <string name="text_user_name">Von Lycaon</string>
     <string name="text_update_personal_info">Update Personal Info</string>
-    <string name="text_total_liked_article">15</string>
+    <string name="text_total_liked_article">0</string>
     <string name="text_liked_article">Liked Articles</string>
-    <string name="text_total_diagnosed_history">8</string>
+    <string name="text_total_diagnosed_history">0</string>
     <string name="text_diagnosed_history">Diagnosed History</string>
     <string name="text_article_title">Kalau gatal sebaiknya jangan digaruk, lalu apa solusinya?</string>
     <string name="text_article_created_at">Thursday, 12 November 2024</string>

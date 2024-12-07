@@ -28,6 +28,7 @@ class AuthRepository private constructor(
         userPreference.logout()
     }
 
+
     suspend fun register(name: String, email: String, password: String): RegisterResponse {
         val registerRequest = RegisterRequest(name = name, email = email, password = password)
         val response = apiService.register(registerRequest)

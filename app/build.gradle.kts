@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
-
 android {
     namespace = "com.capstone.aiskin"
     compileSdk = 35
@@ -53,6 +52,8 @@ dependencies {
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.ui.desktop)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,12 +74,12 @@ dependencies {
     implementation(libs.tensorflow.lite.task.vision)
 
     // Api
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // Sekeleton
-    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+    implementation (libs.shimmer)
 
 }

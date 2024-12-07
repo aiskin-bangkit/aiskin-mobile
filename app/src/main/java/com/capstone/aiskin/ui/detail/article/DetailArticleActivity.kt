@@ -1,19 +1,23 @@
 package com.capstone.aiskin.ui.detail.article
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.databinding.ActivityDetailArticleBinding
 import com.capstone.aiskin.ui.article.ArticleViewModel
+import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
 import com.capstone.aiskin.utils.DateTimeConverter
 
 class DetailArticleActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailArticleBinding
     private val articleViewModel: ArticleViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

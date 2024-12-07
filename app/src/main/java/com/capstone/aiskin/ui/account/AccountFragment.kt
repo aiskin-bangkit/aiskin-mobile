@@ -1,17 +1,23 @@
 package com.capstone.aiskin.ui.account
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.capstone.aiskin.R
 import com.capstone.aiskin.databinding.FragmentAccountBinding
 import com.capstone.aiskin.ui.authentication.login.LoginActivity
 import com.capstone.aiskin.core.di.Injection
+import com.capstone.aiskin.ui.viewmodel.MainViewModel
 import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
 
@@ -19,8 +25,10 @@ class AccountFragment : Fragment() {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
+    private var userToken: String? = null
 
-    private lateinit var accountViewModel: AccountViewModel
+    private lateinit var mainViewModel: MainViewModel
+    private val accountViewModel: AccountViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,20 +40,62 @@ class AccountFragment : Fragment() {
         val authRepository = Injection.provideAuthRepository(requireContext())
 
         val factory = ViewModelFactory(authRepository)
-        accountViewModel = ViewModelProvider(this, factory)[AccountViewModel::class.java]
+        mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
 
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
 
-        accountViewModel.userSession.observe(viewLifecycleOwner) { user ->
+        mainViewModel.userSession.observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
                 navigateToLogin()
+            } else{
+                userToken = user.token
+                Log.d("AccountFragment", "${userToken}")
+                userToken?.let {
+                    if (accountViewModel.userData.value == null) {
+                        accountViewModel.fetchUserProfile(it)
+                    }
+                }
             }
         }
 
+        observeViewModel()
         return view
     }
+
+    private fun observeViewModel() {
+        // Observe User Data
+        accountViewModel.userData.observe(viewLifecycleOwner) { data ->
+            data?.let {
+                binding.tvName.text = it.name
+                Glide.with(this)
+                    .load(it.imageProfile ?: R.drawable.intro_image_3)
+                    .into(binding.imgUserProfile)
+            }
+        }
+
+        // Observe User Data Error
+        accountViewModel.userDataError.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                Log.d("AccountFragment", "Error fetching user profile: $it")
+            }
+        }
+
+        // Observe Loading State
+        accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.imgUserProfile.visibility = View.GONE
+                binding.layoutUserInformation.visibility = View.GONE
+                binding.shimmerUserProfile.visibility = View.VISIBLE
+            } else {
+                binding.imgUserProfile.visibility = View.VISIBLE
+                binding.layoutUserInformation.visibility = View.VISIBLE
+                binding.shimmerUserProfile.visibility = View.GONE            }
+        }
+    }
+
 
     private fun showLogoutDialog() {
         val dialog = AlertDialog.Builder(requireContext())
@@ -61,7 +111,7 @@ class AccountFragment : Fragment() {
 
     private fun logoutUser() {
         lifecycleScope.launch {
-            accountViewModel.logout()
+            mainViewModel.logout()
             navigateToLogin()
         }
     }
