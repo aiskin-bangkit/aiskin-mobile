@@ -1,7 +1,6 @@
 package com.capstone.aiskin.ui.detail.article
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -40,7 +39,6 @@ class DetailArticleActivity : AppCompatActivity() {
         binding.toolbar.btnBack.setOnClickListener { finish() }
 
         val articleId = intent.getStringExtra("ARTICLE_ID") ?: run {
-            Log.e("DetailArticleActivity", "Article ID is null")
             finish()
             return
         }
@@ -57,17 +55,14 @@ class DetailArticleActivity : AppCompatActivity() {
     private fun observeViewModel() {
         articleViewModel.article.observe(this) { response ->
             if (response != null) {
-                Log.d("DetailArticleActivity", "Article Response: $response")
                 updateUI(response)
             } else {
-                Log.e("DetailArticleActivity", "Article response is null")
                 binding.progressBar.visibility = View.GONE
                 showToast("Gagal memuat artikel")
             }
         }
 
-        articleViewModel.articleError.observe(this) { error ->
-            Log.e("DetailArticleActivity", "Error fetching article: $error")
+        articleViewModel.articleError.observe(this) {
             binding.progressBar.visibility = View.GONE
             showToast("Gagal memuat artikel")
         }

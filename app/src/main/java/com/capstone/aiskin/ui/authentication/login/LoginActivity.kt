@@ -2,7 +2,6 @@ package com.capstone.aiskin.ui.authentication.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -55,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.errorMessage.observe(this) { error ->
                 if (error != null) {
                     showToast("Login gagal: $error")
-                    Log.e("LoginActivity", "Error: $error")
                 }
             }
         }

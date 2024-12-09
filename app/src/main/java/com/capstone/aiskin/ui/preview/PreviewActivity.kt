@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.capstone.aiskin.MainActivity
 import com.capstone.aiskin.core.helper.ImageClassifierHelper
 import com.capstone.aiskin.databinding.ActivityPreviewBinding
 import com.capstone.aiskin.ui.result.ResultActivity
@@ -80,7 +81,6 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
                 val imageUriString = imageUri.toString()
 
                 if (percentageScore < 90) {
-                    // Tampilkan dialog jika skor kurang dari 90%
                     showRetryDialog()
                 } else {
                     val otherPredictions = sortedCategories
@@ -105,7 +105,9 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
         }
     }
 
-    // Fungsi untuk menampilkan dialog
+    /*
+    * Fungsi untuk menampilkan dialog
+    */
     private fun showRetryDialog() {
         AlertDialog.Builder(this)
             .setTitle("Gambar Tidak Valid")
@@ -114,6 +116,7 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
                 dialog.dismiss()
             }
             .setNegativeButton("Batal") { dialog, _ ->
+                goToMainActivity()
                 dialog.dismiss()
             }
             .show()
@@ -155,5 +158,10 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
         } else {
             Toast.makeText(this, "Invalid image URI", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun goToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }

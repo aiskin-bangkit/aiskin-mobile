@@ -1,6 +1,5 @@
 package com.capstone.aiskin.ui.account
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,14 +33,10 @@ class AccountViewModel: ViewModel() {
                 _userData.postValue(response.data)
             } catch (e: Exception){
                 _userDataError.postValue(e.message)
-                Log.e("AccountViewModel", "Error User Data: ${e.message}", e)
             } finally {
                 _isUserDataLoading.value = false
             }
         }
     }
 
-    fun resetUserData() {
-        _userData.value = null
-    }
 }
