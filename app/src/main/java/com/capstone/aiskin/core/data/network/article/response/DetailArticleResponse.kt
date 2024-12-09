@@ -25,7 +25,6 @@ data class DetailArticleResponse(
 	@field:SerializedName("content")
 	val content: String? = null
 )
-
 data class UpdatedAt(
 
 	@field:SerializedName("seconds")

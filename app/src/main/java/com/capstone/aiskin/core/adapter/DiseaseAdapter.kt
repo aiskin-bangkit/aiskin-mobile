@@ -1,4 +1,4 @@
-package com.capstone.aiskin.ui.adapter
+package com.capstone.aiskin.core.adapter
 
 import android.util.Log
 import android.view.LayoutInflater

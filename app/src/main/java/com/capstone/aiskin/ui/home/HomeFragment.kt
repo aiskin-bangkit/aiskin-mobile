@@ -1,6 +1,5 @@
 package com.capstone.aiskin.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,8 +19,8 @@ import com.capstone.aiskin.core.di.Injection
 import com.capstone.aiskin.databinding.FragmentHomeBinding
 import com.capstone.aiskin.ui.account.AccountViewModel
 import com.capstone.aiskin.ui.preview.PreviewActivity
-import com.capstone.aiskin.ui.adapter.ArticleAdapter
-import com.capstone.aiskin.ui.adapter.DiseaseAdapter
+import com.capstone.aiskin.core.adapter.ArticleAdapter
+import com.capstone.aiskin.core.adapter.DiseaseAdapter
 import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
 import com.capstone.aiskin.ui.detail.disease.DetailDiseaseActivity
 import com.capstone.aiskin.ui.article.ArticleViewModel
@@ -29,8 +28,8 @@ import com.capstone.aiskin.ui.authentication.login.LoginActivity
 import com.capstone.aiskin.ui.detail.disease.DiseaseViewModel
 import com.capstone.aiskin.ui.viewmodel.MainViewModel
 import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
-import com.capstone.aiskin.utils.CameraHelper
-import com.capstone.aiskin.utils.GalleryHelper
+import com.capstone.aiskin.core.helper.CameraHelper
+import com.capstone.aiskin.core.helper.GalleryHelper
 
 class HomeFragment : Fragment() {
 
@@ -145,11 +144,9 @@ class HomeFragment : Fragment() {
 
         diseaseViewModel.isDiseaseListLoading.observe(viewLifecycleOwner) { isLoading ->
             if (isLoading) {
-                Log.d("HomeFragment", "Disease list loading...")
                 binding.rvSkinDisease.visibility = View.GONE
                 binding.rvSkinDiseaseShimmer.visibility = View.VISIBLE
             } else {
-                Log.d("HomeFragment", "Disease list loaded.")
                 binding.rvSkinDisease.visibility = View.VISIBLE
                 binding.rvSkinDiseaseShimmer.visibility = View.GONE
             }
@@ -223,14 +220,6 @@ class HomeFragment : Fragment() {
         accountViewModel.userDataError.observe(viewLifecycleOwner) { errorMessage ->
             errorMessage?.let {
                 Toast.makeText(requireContext(), "Error: $it", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) {
-                Log.d("HomeFragment", "Fetching user data...")
-            } else {
-                Log.d("HomeFragment", "User data fetch complete.")
             }
         }
     }

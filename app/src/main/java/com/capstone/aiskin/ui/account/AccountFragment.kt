@@ -1,6 +1,6 @@
 package com.capstone.aiskin.ui.account
 
-import android.app.Application
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.R
+import com.capstone.aiskin.core.adapter.LikedArticleAdapter
 import com.capstone.aiskin.databinding.FragmentAccountBinding
 import com.capstone.aiskin.ui.authentication.login.LoginActivity
 import com.capstone.aiskin.core.di.Injection
+import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
 import com.capstone.aiskin.ui.viewmodel.MainViewModel
 import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -30,6 +33,8 @@ class AccountFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private val accountViewModel: AccountViewModel by viewModels()
 
+    private val likedArticleViewModel: LikedArticleViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +47,6 @@ class AccountFragment : Fragment() {
         val factory = ViewModelFactory(authRepository)
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
-
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
@@ -52,7 +56,7 @@ class AccountFragment : Fragment() {
                 navigateToLogin()
             } else{
                 userToken = user.token
-                Log.d("AccountFragment", "${userToken}")
+                Log.d("AccountFragment", "$userToken")
                 userToken?.let {
                     if (accountViewModel.userData.value == null) {
                         accountViewModel.fetchUserProfile(it)
@@ -60,13 +64,13 @@ class AccountFragment : Fragment() {
                 }
             }
         }
-
+        setupRecyclerView()
+        observeLikedArticles()
         observeViewModel()
         return view
     }
 
     private fun observeViewModel() {
-        // Observe User Data
         accountViewModel.userData.observe(viewLifecycleOwner) { data ->
             data?.let {
                 binding.tvName.text = it.name
@@ -96,6 +100,33 @@ class AccountFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun observeLikedArticles() {
+        likedArticleViewModel.likedArticles.observe(viewLifecycleOwner) { articles ->
+            binding.textTotalLikedArticle.text = articles.size.toString()
+
+            if (articles.isNotEmpty()) {
+                binding.rvLikedArticle.visibility = View.VISIBLE
+                binding.rvLikedArticle.adapter = LikedArticleAdapter(articles) { articleId ->
+                    val intent = Intent(requireContext(), DetailArticleActivity::class.java).apply {
+                        putExtra("ARTICLE_ID", articleId)
+                    }
+                    startActivity(intent)
+                }
+                binding.layoutNoLikedArticle.visibility = View.GONE
+            } else {
+                binding.rvLikedArticle.visibility = View.GONE
+                binding.layoutNoLikedArticle.visibility = View.VISIBLE
+            }
+        }
+    }
+
+
+
+    private fun setupRecyclerView() {
+        binding.rvLikedArticle.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvLikedArticle.setHasFixedSize(true)
+    }
 
     private fun showLogoutDialog() {
         val dialog = AlertDialog.Builder(requireContext())

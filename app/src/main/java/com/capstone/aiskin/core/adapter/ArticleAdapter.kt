@@ -1,4 +1,4 @@
-package com.capstone.aiskin.ui.adapter
+package com.capstone.aiskin.core.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
 import com.capstone.aiskin.databinding.ItemArticleBinding
-import com.capstone.aiskin.utils.DateTimeConverter
+import com.capstone.aiskin.core.helper.DateTimeConverter
 
 class ArticleAdapter(
     private val articleList: List<ArticleResponseItem>,

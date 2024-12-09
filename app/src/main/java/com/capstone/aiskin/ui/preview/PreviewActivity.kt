@@ -7,13 +7,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.core.helper.ImageClassifierHelper
 import com.capstone.aiskin.databinding.ActivityPreviewBinding
 import com.capstone.aiskin.ui.result.ResultActivity
-import com.capstone.aiskin.utils.CameraHelper
-import com.capstone.aiskin.utils.GalleryHelper
+import com.capstone.aiskin.core.helper.CameraHelper
+import com.capstone.aiskin.core.helper.GalleryHelper
 
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
@@ -73,25 +74,29 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
             if (classifications.isNotEmpty()) {
                 val sortedCategories = classifications.sortedByDescending { it.score }
                 val topCategory = sortedCategories[0]
-                val otherPredictions = sortedCategories
-                    .drop(1)
-                    .take(3)
-                    .filter { it.score > 0 }
-                    .map { it.label to String.format("%.0f%%", it.score * 100) }
-
-                val prediction = topCategory.label
                 val percentageScore = topCategory.score * 100
                 val score = String.format("%.0f%%", percentageScore)
+                val prediction = topCategory.label
                 val imageUriString = imageUri.toString()
 
-                val intent = Intent(this, ResultActivity::class.java).apply {
-                    putExtra("imageUri", imageUriString)
-                    putExtra("prediction", prediction)
-                    putExtra("score", score)
-                    putExtra("otherPredictions", ArrayList(otherPredictions))
+                if (percentageScore < 90) {
+                    // Tampilkan dialog jika skor kurang dari 90%
+                    showRetryDialog()
+                } else {
+                    val otherPredictions = sortedCategories
+                        .drop(1)
+                        .take(3)
+                        .filter { it.score > 0 }
+                        .map { it.label to String.format("%.0f%%", it.score * 100) }
 
+                    val intent = Intent(this, ResultActivity::class.java).apply {
+                        putExtra("imageUri", imageUriString)
+                        putExtra("prediction", prediction)
+                        putExtra("score", score)
+                        putExtra("otherPredictions", ArrayList(otherPredictions))
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
             } else {
                 Toast.makeText(this, "Tidak ada hasil klasifikasi.", Toast.LENGTH_SHORT).show()
             }
@@ -100,6 +105,19 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
         }
     }
 
+    // Fungsi untuk menampilkan dialog
+    private fun showRetryDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Gambar Tidak Valid")
+            .setMessage("Gambar tidak dapat dikenali sebagai penyakit yang tersedia atau penyakit belum terdaftar. Silakan coba masukkan gambar lain.")
+            .setPositiveButton("Coba Lagi") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setNegativeButton("Batal") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
     override fun onError(error: String) {
         Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
     }

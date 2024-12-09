@@ -1,4 +1,4 @@
-package com.capstone.aiskin.utils
+package com.capstone.aiskin.core.helper
 
 import android.content.ContentValues
 import android.content.Context
@@ -10,6 +10,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.capstone.aiskin.core.data.local.article.entity.ArticleEntity
+import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -73,4 +75,23 @@ object DateTimeConverter {
 fun normalizeName(name: String): String {
     return name.replace(Regex("\\s*\\(.*?\\)\\s*"), "").trim().lowercase()
 }
+
+/**
+ * Util buat nyimpen data article ke room db
+ */
+object ArticleMapper {
+    fun responseToEntity(response: ArticleResponseItem): ArticleEntity {
+        return ArticleEntity(
+            id = response.id ?: "",
+            name = response.name ?: "",
+            description = response.description ?: "",
+            content = response.content ?: "",
+            imageUrl = response.image ?: "",
+            createdAt = response.createdAt ?: 0L,
+            updatedAt = response.updatedAt ?: 0L
+        )
+    }
+}
+
+
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 android {
     namespace = "com.capstone.aiskin"
@@ -12,7 +13,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,7 +35,10 @@ android {
     buildFeatures {
         viewBinding = true
         mlModelBinding = true
+
     }
+
+
 }
 
 dependencies {
@@ -81,5 +84,9 @@ dependencies {
 
     // Sekeleton
     implementation (libs.shimmer)
+
+    // Room & DAO
+    implementation(libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
 
 }
