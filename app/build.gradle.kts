@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
-
 android {
     namespace = "com.capstone.aiskin"
     compileSdk = 35
@@ -13,7 +13,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,7 +34,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
+
     }
+
+
 }
 
 dependencies {
@@ -49,7 +52,41 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.ui.desktop)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Glide for showing online image
+    implementation(libs.glide)
+
+    //noinspection GradleDependency
+    implementation (libs.androidx.activity.ktx)
+    //noinspection GradleDependency,GradleDependency
+    implementation (libs.androidx.fragment.ktx)
+
+
+    //Library TensorFlow Lite
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support.v044)
+    implementation(libs.tensorflow.lite.metadata.v044)
+    implementation(libs.tensorflow.lite.task.vision)
+
+    // Api
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // Sekeleton
+    implementation (libs.shimmer)
+
+    // Room & DAO
+    implementation(libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
+
 }
