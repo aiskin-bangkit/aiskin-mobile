@@ -2,7 +2,6 @@ package com.capstone.aiskin.ui.article
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,14 +60,12 @@ class ArticleFragment : Fragment() {
 
     private fun observeViewModel() {
 
-        // All Article Data Observer
         articleViewModel.allArticles.observe(viewLifecycleOwner) { articles ->
             articleAdapter = ArticleAdapter(articles, onItemArticleClick)
             binding.rvAllArticle.adapter = articleAdapter
         }
 
-        articleViewModel.allArticles.observe(viewLifecycleOwner) { errorMessage ->
-            Log.d("ArticleFragment", "Error fetching All Article $errorMessage ")
+        articleViewModel.allArticles.observe(viewLifecycleOwner) {
         }
 
         articleViewModel.isAllArticleLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -81,14 +78,9 @@ class ArticleFragment : Fragment() {
             }
         }
 
-        // Latest Article Data Observer
         articleViewModel.latestArticles.observe(viewLifecycleOwner) { articles ->
             heroArticleAdapter = HeroArticleAdapter(articles, onItemArticleClick)
             binding.rvNewArticle.adapter = heroArticleAdapter
-        }
-
-        articleViewModel.latestArticlesError.observe(viewLifecycleOwner) { errorMessage ->
-            Log.d("ArticleFragment", "Error fetching Latest Article $errorMessage ")
         }
 
         articleViewModel.isLatestArticleLoading.observe(viewLifecycleOwner) { isLoading ->

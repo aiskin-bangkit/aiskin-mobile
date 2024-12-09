@@ -15,7 +15,6 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.capstone.aiskin.R
 import com.capstone.aiskin.databinding.ActivityIntroBinding
-import com.capstone.aiskin.ui.preview.PreviewActivity
 import com.capstone.aiskin.ui.authentication.login.LoginActivity
 
 class IntroActivity : AppCompatActivity() {

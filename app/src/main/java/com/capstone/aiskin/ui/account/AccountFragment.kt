@@ -3,7 +3,6 @@ package com.capstone.aiskin.ui.account
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +55,6 @@ class AccountFragment : Fragment() {
                 navigateToLogin()
             } else{
                 userToken = user.token
-                Log.d("AccountFragment", "$userToken")
                 userToken?.let {
                     if (accountViewModel.userData.value == null) {
                         accountViewModel.fetchUserProfile(it)
@@ -80,12 +78,6 @@ class AccountFragment : Fragment() {
             }
         }
 
-        // Observe User Data Error
-        accountViewModel.userDataError.observe(viewLifecycleOwner) { errorMessage ->
-            errorMessage?.let {
-                Log.d("AccountFragment", "Error fetching user profile: $it")
-            }
-        }
 
         // Observe Loading State
         accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->

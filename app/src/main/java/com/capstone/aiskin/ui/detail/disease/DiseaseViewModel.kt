@@ -1,6 +1,5 @@
 package com.capstone.aiskin.ui.detail.disease
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,22 +23,17 @@ class DiseaseViewModel : ViewModel() {
     val disease: LiveData<DetailDiseaseResponse> get() = _disease
 
     private val _isDiseaseLoading = MutableLiveData<Boolean>()
-    val isDiseaseLoading: LiveData<Boolean> = _isDiseaseLoading
 
     private val _diseaseError = MutableLiveData<String>()
-    val diseaseError: LiveData<String> = _diseaseError
 
     fun fetchDiseases() {
         _isDiseaseListLoading.value = true
         viewModelScope.launch {
             try {
                 val response = ApiConfig.getApiService().getAllDisease()
-                Log.d("DiseaseViewModel", "Raw response: $response")
                 _diseaseList.value = response
-                Log.d("DiseaseViewModel", "Mapped disease list: ${_diseaseList.value}")
             } catch (e: Exception) {
                 _diseaseListError.value = e.message
-                Log.e("DiseaseViewModel", "Error fetching diseases list: ${e.message}", e)
             } finally {
                 _isDiseaseListLoading.value = false
             }
@@ -54,7 +48,6 @@ class DiseaseViewModel : ViewModel() {
                 _disease.postValue(response)
             } catch (e: Exception) {
                 _diseaseError.postValue(e.message)
-                Log.e("DiseaseViewModel", "Error fetching disease: ${e.message}", e)
             } finally {
                 _isDiseaseLoading.value = false
             }

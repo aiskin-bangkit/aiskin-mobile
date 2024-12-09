@@ -8,6 +8,8 @@
 
     <!-- String for activity intro -->
     <string name="text_intro">Ever wondered where you can find\nout about your skin disease without\ngoing to the doctor?</string>
+    <string name="text_intro_2">Our AI-powered app will analyze your\nskin condition from a photo with\nprecision and speed.</string>
+    <string name="text_intro_3">Get instant results and actionable\nrecommendations to keep your skin\nhealthy and happy!</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
     <string name="skip_intro">Skip</string>

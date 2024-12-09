@@ -45,7 +45,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
         }
     }
 
-    suspend fun saveSession(user: UserModel) {
+    private suspend fun saveSession(user: UserModel) {
         repository.saveSession(user)
     }
 
