@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.aiskin.databinding.FragmentArticleBinding
-import com.capstone.aiskin.ui.adapter.ArticleAdapter
-import com.capstone.aiskin.ui.adapter.HeroArticleAdapter
+import com.capstone.aiskin.core.adapter.ArticleAdapter
+import com.capstone.aiskin.core.adapter.HeroArticleAdapter
 import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
 
 class ArticleFragment : Fragment() {

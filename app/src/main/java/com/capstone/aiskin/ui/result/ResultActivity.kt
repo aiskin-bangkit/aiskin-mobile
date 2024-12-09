@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.capstone.aiskin.R
 import com.capstone.aiskin.core.data.network.retrofit.ApiConfig
 import com.capstone.aiskin.core.data.network.disease.response.DiseaseResponse
-import com.capstone.aiskin.utils.normalizeName
+import com.capstone.aiskin.core.helper.normalizeName
 import kotlinx.coroutines.launch
 
 class ResultActivity : AppCompatActivity() {

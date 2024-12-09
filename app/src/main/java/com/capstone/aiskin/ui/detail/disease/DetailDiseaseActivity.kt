@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.capstone.aiskin.databinding.ActivityDetailDiseaseBinding
-import com.capstone.aiskin.utils.DateTimeConverter
+import com.capstone.aiskin.core.helper.DateTimeConverter
 
 class DetailDiseaseActivity : AppCompatActivity() {
 
