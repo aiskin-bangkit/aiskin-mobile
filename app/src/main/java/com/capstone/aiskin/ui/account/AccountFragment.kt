@@ -69,6 +69,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+
         accountViewModel.userData.observe(viewLifecycleOwner) { data ->
             data?.let {
                 binding.tvName.text = it.name
@@ -96,7 +97,7 @@ class AccountFragment : Fragment() {
     private fun observeLikedArticles() {
         likedArticleViewModel.likedArticles.observe(viewLifecycleOwner) { articles ->
             binding.textTotalLikedArticle.text = articles.size.toString()
-
+            binding.rvLikedArticleShimmer.visibility = View.VISIBLE
             if (articles.isNotEmpty()) {
                 binding.rvLikedArticle.visibility = View.VISIBLE
                 binding.rvLikedArticle.adapter = LikedArticleAdapter(articles) { articleId ->
@@ -106,12 +107,18 @@ class AccountFragment : Fragment() {
                     startActivity(intent)
                 }
                 binding.layoutNoLikedArticle.visibility = View.GONE
+                binding.rvLikedArticleShimmer.visibility = View.GONE
             } else {
                 binding.rvLikedArticle.visibility = View.GONE
+                binding.rvLikedArticleShimmer.visibility = View.GONE
                 binding.layoutNoLikedArticle.visibility = View.VISIBLE
             }
         }
+
+
     }
+
+
 
 
 
