@@ -33,6 +33,7 @@ class PreviewActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierLis
         binding = ActivityPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         imageClassifierHelper = ImageClassifierHelper(
             context = this,
             classifierListener = this

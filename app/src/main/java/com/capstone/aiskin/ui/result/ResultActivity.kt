@@ -2,10 +2,12 @@ package com.capstone.aiskin.ui.result
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -30,6 +32,14 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        enableEdgeToEdge()
+
+        val toolbar = findViewById<View>(R.id.toolbar)
+        val btnBack = toolbar.findViewById<ImageView>(R.id.btn_back)
+        btnBack.setOnClickListener {
+            finish()
+        }
+
 
         val textResultDisease: TextView = findViewById(R.id.text_result_disease)
         val textResultPercentage: TextView = findViewById(R.id.text_result_percentage)
@@ -125,10 +135,6 @@ class ResultActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
     }
 
     private fun saveHistoryToApi(token: String, historyRequest: HistoryRequest) {
