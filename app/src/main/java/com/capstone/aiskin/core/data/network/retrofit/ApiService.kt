@@ -1,6 +1,7 @@
 package com.capstone.aiskin.core.data.network.retrofit
 
 import com.capstone.aiskin.core.data.network.account.response.AccountResponse
+import com.capstone.aiskin.core.data.network.account.response.UpdateResponse
 import com.capstone.aiskin.core.data.network.authentication.request.login.LoginRequest
 import com.capstone.aiskin.core.data.network.authentication.request.register.RegisterRequest
 import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
@@ -11,10 +12,15 @@ import com.capstone.aiskin.core.data.network.disease.response.DetailDiseaseRespo
 import com.capstone.aiskin.core.data.network.disease.response.DiseaseResponse
 import com.capstone.aiskin.core.data.network.history.request.HistoryRequest
 import com.capstone.aiskin.core.data.network.history.response.HistoryResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService{
@@ -52,6 +58,16 @@ interface ApiService{
     suspend fun getUserProfile(
         @Header("Authorization") token: String
     ): AccountResponse
+
+    @Multipart
+    @PATCH("user/profile")
+    suspend fun updateUserProfile(
+        @Header("Authorization") token: String,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part imageProfile: MultipartBody.Part?
+    ): UpdateResponse
+
 
     @GET("history")
     suspend fun getHistory(
