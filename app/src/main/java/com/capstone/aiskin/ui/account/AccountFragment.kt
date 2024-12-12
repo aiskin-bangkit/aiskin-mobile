@@ -3,7 +3,6 @@ package com.capstone.aiskin.ui.account
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +55,6 @@ class AccountFragment : Fragment() {
                 navigateToLogin()
             } else{
                 userToken = user.token
-                Log.d("AccountFragment", "$userToken")
                 userToken?.let {
                     if (accountViewModel.userData.value == null) {
                         accountViewModel.fetchUserProfile(it)
@@ -71,6 +69,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+
         accountViewModel.userData.observe(viewLifecycleOwner) { data ->
             data?.let {
                 binding.tvName.text = it.name
@@ -80,12 +79,6 @@ class AccountFragment : Fragment() {
             }
         }
 
-        // Observe User Data Error
-        accountViewModel.userDataError.observe(viewLifecycleOwner) { errorMessage ->
-            errorMessage?.let {
-                Log.d("AccountFragment", "Error fetching user profile: $it")
-            }
-        }
 
         // Observe Loading State
         accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -104,7 +97,7 @@ class AccountFragment : Fragment() {
     private fun observeLikedArticles() {
         likedArticleViewModel.likedArticles.observe(viewLifecycleOwner) { articles ->
             binding.textTotalLikedArticle.text = articles.size.toString()
-
+            binding.rvLikedArticleShimmer.visibility = View.VISIBLE
             if (articles.isNotEmpty()) {
                 binding.rvLikedArticle.visibility = View.VISIBLE
                 binding.rvLikedArticle.adapter = LikedArticleAdapter(articles) { articleId ->
@@ -114,12 +107,18 @@ class AccountFragment : Fragment() {
                     startActivity(intent)
                 }
                 binding.layoutNoLikedArticle.visibility = View.GONE
+                binding.rvLikedArticleShimmer.visibility = View.GONE
             } else {
                 binding.rvLikedArticle.visibility = View.GONE
+                binding.rvLikedArticleShimmer.visibility = View.GONE
                 binding.layoutNoLikedArticle.visibility = View.VISIBLE
             }
         }
+
+
     }
+
+
 
 
 

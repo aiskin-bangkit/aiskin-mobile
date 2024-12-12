@@ -1,6 +1,5 @@
 package com.capstone.aiskin.core.data.network.retrofit
 
-import com.capstone.aiskin.core.data.local.model.UserModel
 import com.capstone.aiskin.core.data.network.account.response.AccountResponse
 import com.capstone.aiskin.core.data.network.authentication.request.login.LoginRequest
 import com.capstone.aiskin.core.data.network.authentication.request.register.RegisterRequest
@@ -10,6 +9,8 @@ import com.capstone.aiskin.core.data.network.authentication.response.login.Login
 import com.capstone.aiskin.core.data.network.authentication.response.register.RegisterResponse
 import com.capstone.aiskin.core.data.network.disease.response.DetailDiseaseResponse
 import com.capstone.aiskin.core.data.network.disease.response.DiseaseResponse
+import com.capstone.aiskin.core.data.network.history.request.HistoryRequest
+import com.capstone.aiskin.core.data.network.history.response.HistoryResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -51,6 +52,16 @@ interface ApiService{
     suspend fun getUserProfile(
         @Header("Authorization") token: String
     ): AccountResponse
+
+    @GET("history")
+    suspend fun getHistory(
+    ): AccountResponse
+
+    @POST("history")
+    suspend fun saveHistory(
+        @Header("Authorization") token: String,
+        @Body historyRequest: HistoryRequest
+    ): HistoryResponse
 
 
 }

@@ -1,6 +1,5 @@
 package com.capstone.aiskin.ui.article
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,14 +29,12 @@ class ArticleViewModel : ViewModel() {
     val isAllArticleLoading: LiveData<Boolean> get() = _isAllArticleLoading
 
     private val _allArticlesError = MutableLiveData<String>()
-    val allArticlesError: LiveData<String> get() = _allArticlesError
 
     // Single Article Variables
     private val _article = MutableLiveData<ArticleResponseItem?>()
     val article: LiveData<ArticleResponseItem?> get() = _article
 
     private val _isArticleLoading = MutableLiveData<Boolean>()
-    val isArticleLoading: LiveData<Boolean> get() = _isArticleLoading
 
     private val _articleError = MutableLiveData<String?>()
     val articleError: LiveData<String?> get() = _articleError
@@ -50,7 +47,6 @@ class ArticleViewModel : ViewModel() {
                 _latestArticles.postValue(response)
             } catch (e: Exception) {
                 _latestArticlesError.postValue(e.message)
-                Log.e("ArticleViewModel", "Error fetching latest articles: ${e.message}", e)
             } finally {
                 _isLatestArticleLoading.value = false
             }
@@ -65,7 +61,6 @@ class ArticleViewModel : ViewModel() {
                 _allArticles.postValue(response)
             } catch (e: Exception) {
                 _allArticlesError.postValue(e.message)
-                Log.e("ArticleViewModel", "Error fetching all articles: ${e.message}", e)
             } finally {
                 _isAllArticleLoading.value = false
             }
@@ -77,24 +72,14 @@ class ArticleViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = ApiConfig.getApiService().getArticleById(id)
-                // Map DetailArticleResponse to ArticleResponseItem
                 val mappedArticle = mapDetailToResponse(response, id)
                 _article.postValue(mappedArticle)
             } catch (e: Exception) {
                 _articleError.postValue(e.message)
-                Log.e("ArticleViewModel", "Error fetching article by ID: ${e.message}", e)
             } finally {
                 _isArticleLoading.value = false
             }
         }
-    }
-
-    fun setArticle(article: ArticleResponseItem) {
-        _article.value = article
-    }
-
-    fun setArticleError(error: String) {
-        _articleError.value = error
     }
 
     private fun mapDetailToResponse(

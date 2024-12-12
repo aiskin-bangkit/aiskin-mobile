@@ -3,7 +3,6 @@ package com.capstone.aiskin.ui.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,7 +74,6 @@ class HomeFragment : Fragment() {
                 navigateToLogin()
             } else{
                 userToken = user.token
-                Log.d("AccountFragment", "${userToken}")
                 userToken?.let {
                     if (accountViewModel.userData.value == null) {
                         accountViewModel.fetchUserProfile(it)
@@ -130,11 +128,8 @@ class HomeFragment : Fragment() {
          */
         diseaseViewModel.diseaseList.observe(viewLifecycleOwner) { diseases ->
             if (diseases != null) {
-                Log.d("HomeFragment", "Diseases observed: ${diseases.size}")
                 diseaseAdapter = DiseaseAdapter(diseases, onItemDiseaseClick)
                 binding.rvSkinDisease.adapter = diseaseAdapter
-            } else {
-                Log.e("HomeFragment", "No diseases found.")
             }
         }
 
@@ -209,7 +204,6 @@ class HomeFragment : Fragment() {
 
     private fun observeAccountViewModel() {
         accountViewModel.userData.observe(viewLifecycleOwner) { userData ->
-            Log.d("HomeFragment", "User data observed: $userData")
             userData?.let {
                 binding.textHeroHome.text = getString(R.string.text_hero_home, it.name ?: "Guest")
             } ?: run {
@@ -238,7 +232,6 @@ class HomeFragment : Fragment() {
     }
 
     private val onItemDiseaseClick: (String) -> Unit = { id ->
-        Log.d("HomeFragment", "Selected Disease ID: $id")
         val intent = Intent(requireContext(), DetailDiseaseActivity::class.java).apply {
             putExtra("DISEASE_ID", id)
         }

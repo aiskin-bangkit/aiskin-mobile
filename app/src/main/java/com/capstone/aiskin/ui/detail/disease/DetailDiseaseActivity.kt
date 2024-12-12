@@ -1,7 +1,6 @@
 package com.capstone.aiskin.ui.detail.disease
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -27,10 +26,9 @@ class DetailDiseaseActivity : AppCompatActivity() {
 
         binding.progressBar.visibility = android.view.View.VISIBLE
         val diseaseId = intent.getStringExtra("DISEASE_ID")
+
         if (diseaseId != null) {
             diseaseViewModel.fetchDiseaseById(diseaseId)
-        } else {
-            Log.e("DetailDiseaseActivity", "Disease ID is null")
         }
 
         observeViewModel()
@@ -58,10 +56,6 @@ class DetailDiseaseActivity : AppCompatActivity() {
 
                 binding.progressBar.visibility = android.view.View.GONE
             }
-        }
-
-        diseaseViewModel.diseaseError.observe(this) { error ->
-            Log.e("DetailDiseaseActivity", "Error fetching disease: $error")
         }
     }
 }

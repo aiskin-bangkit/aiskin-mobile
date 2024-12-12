@@ -11,24 +11,22 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
 
-    <!-- Base application theme. -->
+    <!-- Action bar theme. -->
     <style name="Theme.AISkin.ActionBar" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/yellow</item>
-        <item name="colorPrimaryVariant">@color/yellow_200</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/grey</item>
         <item name="colorSecondaryVariant">@color/grey_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/yellow</item>
     </style>
 
+    <!-- Custom Bottom Navigation. -->
     <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconSize">24dp</item>
         <item name="itemTextAppearanceActive">@style/CustomTextActive</item>
@@ -39,14 +37,14 @@
         <item name="backgroundTint">@color/white</item>
     </style>
 
+    <!-- Text Styles -->
     <style name="CustomTextActive" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textColor">@color/yellow_200</item>
     </style>
 
     <style name="CustomTextInactive" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textColor">@color/black40</item>
     </style>
-
 </resources>
