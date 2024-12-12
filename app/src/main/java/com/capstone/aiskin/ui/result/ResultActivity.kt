@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.capstone.aiskin.R
 import com.capstone.aiskin.core.data.local.datastore.UserPreference
 import com.capstone.aiskin.core.data.local.datastore.dataStore
-import com.capstone.aiskin.core.data.network.account.response.Data
+import com.capstone.aiskin.core.data.network.account.response.AccountData
 import com.capstone.aiskin.core.data.network.retrofit.ApiConfig
 import com.capstone.aiskin.core.data.network.disease.response.DiseaseResponse
 import com.capstone.aiskin.core.data.network.history.request.HistoryRequest
@@ -233,7 +233,7 @@ class ResultActivity : AppCompatActivity() {
      * Fungsi untuk mengambil data akun pengguna
      * kebutuhan mengambil id-nya
      */
-    private suspend fun getUserAccount(token: String): Data? {
+    private suspend fun getUserAccount(token: String): AccountData? {
         return try {
             val apiService = ApiConfig.getApiService()
             val response = apiService.getUserProfile(token)

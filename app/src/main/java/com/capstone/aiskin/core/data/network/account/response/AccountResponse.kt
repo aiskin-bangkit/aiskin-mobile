@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class AccountResponse(
 
 	@field:SerializedName("data")
-	val data: Data? = null,
+	val data: AccountData? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
@@ -14,10 +14,10 @@ data class AccountResponse(
 	val status: String? = null
 )
 
-data class Data(
+data class AccountData(
 
 	@field:SerializedName("image_profile")
-	val imageProfile: Any? = null,
+	val imageProfile: String? = null,
 
 	@field:SerializedName("name")
 	val name: String? = null,
