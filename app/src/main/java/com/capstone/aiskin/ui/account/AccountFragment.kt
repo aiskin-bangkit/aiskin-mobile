@@ -19,6 +19,7 @@ import com.capstone.aiskin.databinding.FragmentAccountBinding
 import com.capstone.aiskin.ui.authentication.login.LoginActivity
 import com.capstone.aiskin.core.di.Injection
 import com.capstone.aiskin.ui.detail.article.DetailArticleActivity
+import com.capstone.aiskin.ui.updateuser.UpdateUserActivity
 import com.capstone.aiskin.ui.viewmodel.MainViewModel
 import com.capstone.aiskin.ui.viewmodel.ViewModelFactory
 import kotlinx.coroutines.launch
@@ -42,7 +43,6 @@ class AccountFragment : Fragment() {
         val view: View = binding.root
 
         val authRepository = Injection.provideAuthRepository(requireContext())
-
         val factory = ViewModelFactory(authRepository)
         mainViewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
@@ -53,7 +53,7 @@ class AccountFragment : Fragment() {
         mainViewModel.userSession.observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
                 navigateToLogin()
-            } else{
+            } else {
                 userToken = user.token
                 userToken?.let {
                     if (accountViewModel.userData.value == null) {
@@ -62,6 +62,11 @@ class AccountFragment : Fragment() {
                 }
             }
         }
+
+        binding.tvUpdateInfo.setOnClickListener{
+            navigateToUpdateUser()
+        }
+
         setupRecyclerView()
         observeLikedArticles()
         observeViewModel()
@@ -69,7 +74,6 @@ class AccountFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-
         accountViewModel.userData.observe(viewLifecycleOwner) { data ->
             data?.let {
                 binding.tvName.text = it.name
@@ -78,7 +82,6 @@ class AccountFragment : Fragment() {
                     .into(binding.imgUserProfile)
             }
         }
-
 
         // Observe Loading State
         accountViewModel.isUserDataLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -89,9 +92,11 @@ class AccountFragment : Fragment() {
             } else {
                 binding.imgUserProfile.visibility = View.VISIBLE
                 binding.layoutUserInformation.visibility = View.VISIBLE
-                binding.shimmerUserProfile.visibility = View.GONE            }
+                binding.shimmerUserProfile.visibility = View.GONE
+            }
         }
     }
+
 
     @SuppressLint("SetTextI18n")
     private fun observeLikedArticles() {
@@ -114,13 +119,7 @@ class AccountFragment : Fragment() {
                 binding.layoutNoLikedArticle.visibility = View.VISIBLE
             }
         }
-
-
     }
-
-
-
-
 
     private fun setupRecyclerView() {
         binding.rvLikedArticle.layoutManager = LinearLayoutManager(requireContext())
@@ -150,6 +149,20 @@ class AccountFragment : Fragment() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         startActivity(intent)
         requireActivity().finish()
+    }
+
+    private fun navigateToUpdateUser() {
+        val intent = Intent(requireContext(), UpdateUserActivity::class.java).apply {
+            putExtra("USER_TOKEN", userToken)
+        }
+        startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        userToken?.let {
+            accountViewModel.fetchUserProfile(it)
+        }
     }
 
     override fun onDestroyView() {

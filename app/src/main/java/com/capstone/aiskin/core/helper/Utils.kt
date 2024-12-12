@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.capstone.aiskin.core.data.local.article.entity.ArticleEntity
 import com.capstone.aiskin.core.data.network.article.response.ArticleResponseItem
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -92,6 +93,18 @@ object ArticleMapper {
         )
     }
 }
+
+object FileUtil {
+    fun from(context: Context, uri: Uri): File {
+        val inputStream = context.contentResolver.openInputStream(uri)
+        val tempFile = File(context.cacheDir, "temp_image")
+        tempFile.outputStream().use { output ->
+            inputStream?.copyTo(output)
+        }
+        return tempFile
+    }
+}
+
 
 
 
